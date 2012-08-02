@@ -7,10 +7,12 @@ gem 'haml-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
+gem 'pdfkit'
+gem 'wkhtmltopdf-heroku'
+  
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '0.5.5'
