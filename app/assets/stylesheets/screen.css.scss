@@ -9,19 +9,55 @@
 .page {
   @include container($total-columns, $break);
   @include susy-grid-background;
+  font-family: "museo-sans-1","museo-sans-2",sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1em;
+  text-align: justify;
+}
+
+.banner {
+  h1 {
+    font-family: "museo-slab-1","museo-slab-2",serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 3em;
+    text-align: center;
+  }
 }
 
 .pagenav {
-	background-color: yellow;
+  font-size: 1.2em;
+  background-color: yellow;
+  ul { 
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    li {
+      display: inline-block;
+
+    } 
+  }
 }
 
 @include at-breakpoint($break) {
-  .banner { @include prefix(2,$break); }
-  .pagenav { @include span-columns(2,$break); }
+  .banner { 
+    @include prefix(2,$break); 
+  }
+  .pagenav { 
+    @include span-columns(2,$break);
+    ul li {
+      display: block;
+    }
+  }
+
   .main { 
   	$main-columns: 10;
   	@include span-columns($main-columns omega, $break);
-  	.content { @include span-columns(7, $main-columns) } 
+  	.content { 
+      @include span-columns(7, $main-columns);
+    } 
   	.summary { @include span-columns(3 omega, $main-columns)}
   }
 }
@@ -29,7 +65,8 @@
 .contentinfo {
 	background-color : red;
   margin: 0 0 - $grid-padding;
-  padding: 0 $grid-padding;
+  padding: 10px $grid-padding;
+  font-size: 0.9em;
   @include at-breakpoint($break) {
     clear: both;
     margin: 0;
