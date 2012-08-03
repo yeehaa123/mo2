@@ -12,6 +12,7 @@ gem 'bson_ext'
 
 # gem 'pdfkit'
 gem 'wicked_pdf'
+
   
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
@@ -45,6 +46,10 @@ group :test do
   # Linux
   # gem 'rb-inotify', '0.8.8'
   # gem 'libnotify', '0.5.9'
+end
+
+group :production do
+  gem "wkhtmltopdf-heroku", :git => 'git://github.com/camdez/wkhtmltopdf-heroku.git'
 end
 
 # To use ActiveModel has_secure_password
