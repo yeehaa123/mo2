@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'jquery-rails'
-gem 'thin'
+# gem 'thin'
 gem 'haml-rails'
 
 # Bundle edge Rails instead:
