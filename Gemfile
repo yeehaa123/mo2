@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'jquery-rails'
-gem 'thin'
+# gem 'thin'
 gem 'haml-rails'
 
 # Bundle edge Rails instead:
@@ -11,7 +11,6 @@ gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
 gem 'pdfkit'
-gem 'wkhtmltopdf-heroku'
   
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
@@ -55,6 +54,8 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
+
+gem 'passenger'
 
 # Deploy with Capistrano
 # gem 'capistrano'
