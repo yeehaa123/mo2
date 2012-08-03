@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'jquery-rails'
-# gem 'thin'
 gem 'haml-rails'
 
 # Bundle edge Rails instead:
@@ -50,6 +49,7 @@ end
 
 group :production do
   gem "wkhtmltopdf-heroku", :git => 'git://github.com/camdez/wkhtmltopdf-heroku.git'
+  gem 'thin'
 end
 
 # To use ActiveModel has_secure_password
