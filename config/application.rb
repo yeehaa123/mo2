@@ -66,6 +66,6 @@ module Mo2
     config.assets.version = '1.0'
     
     # YEEHAA: Added to include pdfkit
-    config.middleware.use "PDFKit::Middleware"
+    # config.middleware.use "PDFKit::Middleware", print_media_type: true
   end
 end

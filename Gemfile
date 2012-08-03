@@ -10,7 +10,8 @@ gem 'haml-rails'
 gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
-gem 'pdfkit'
+# gem 'pdfkit'
+gem 'wicked_pdf'
   
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
