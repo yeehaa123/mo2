@@ -50,7 +50,7 @@ end
 
 group :production do
   gem "wkhtmltopdf-heroku", :git => 'git://github.com/camdez/wkhtmltopdf-heroku.git'
-  gem 'thin'
+  # gem 'thin'
 end
 
 # To use ActiveModel has_secure_password
