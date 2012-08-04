@@ -10,7 +10,7 @@ gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
 # gem 'pdfkit'
-gem 'wicked_pdf'
+# gem 'wicked_pdf'
 # gem 'maruku'
 gem 'kramdown'
   
