@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  def home2
+  def home
   	respond_to do |format|
       format.html
       format.pdf do
@@ -9,6 +9,6 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def home
+  def home2
   end
 end
