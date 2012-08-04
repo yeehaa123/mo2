@@ -6,25 +6,57 @@
 /* -------------------------------------------------------------------------*/
 /* Layout */
 
+html {
+  background-color: $themeyellow;   
+}
+
 .page {
   @include container($total-columns, $break);
   @include susy-grid-background;
+  color: $themedarkblue;
   font-family: "museo-sans-1","museo-sans-2",sans-serif;
   font-style: normal;
-  font-weight: 300;
+  font-weight: 200;
   font-size: 1em;
   text-align: justify;
-  h1, h2, h3, h4, h5, h6 { text-align: left; }
+  h1, h2, h3, h4, h5, h6 { 
+    text-align: left; 
+    font-family: "museo-slab-1","museo-slab-2",serif;
+    color: $themered;
+  }
+  sup {
+    vertical-align: 100%;
+    font-size: 0.7em; 
+  }
 }
 
 .banner {
+  @include inline-block;
+  float: right;
+  text-align: right;
   h1 {
-    font-family: "museo-slab-1","museo-slab-2",serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 1.8em;
+    background-color: $themeyellow;
+    color: $themedarkblue;
+    border: 5px;
+    margin: 0;
+    padding: 0 10px 0px 10px;;
+    font-weight: 300;
+    font-size: 1.8em;      
+    vertical-align: top;
     text-align: right;
-    margin: 10px 0px;
+    @include single-text-shadow;
+    letter-spacing: -0.05em;
+    span#medial {
+      vertical-align: 50%;
+    }
+    span#slash {
+      color: $themered;
+      font-size: 2em;
+      vertical-align: -10%;
+      margin: 0 -0.25em 0 -0.2em;
+    }
+    span#operations {
+    }
   }
 }
 
@@ -33,21 +65,24 @@
   font-size: 1.2em;
   // background-color: yellow;
   ul { 
+    display: $inline-block-alignment top;
+    float: left;
     margin: 0;
     padding: 0;
     list-style-type: none;
     text-align: center;
     li {
       display: inline-block;
-
     } 
   }
 }
 
 .main {
+  clear: both;  
   blockquote {
     font-family: "museo-slab-1","museo-slab-2",serif;
     font-size: 0.9em; 
+    font-style: italic;
     margin: 20px 0; 
     blockquote {
       margin: 0; 
@@ -63,10 +98,18 @@
   h1 {
     font-family: "museo-sans-1","museo-sans-2",sans-serif;
     font-weight: 900;
-    font-size: 2em; 
+    font-size: 2em;
+    color: $themedarkblue;  
+
   }
+
+  h2 {
+
+  }
+
   .summary {
     font-size: 0.9em;
+    display: none;
   }
 }
 
@@ -74,9 +117,12 @@
 @include at-breakpoint($break) {
   .banner { 
     @include prefix(2,$break); 
+    display: block;
   }
   .pagenav { 
     @include span-columns(2,$break);
+    clear: both;
+    @include inline-block;
     ul li {
       display: block;
     }
@@ -88,7 +134,9 @@
   	.content { 
       @include span-columns(7, $main-columns);
     } 
-  	.summary { @include span-columns(3 omega, $main-columns)}
+  	.summary { 
+      @include span-columns(3 omega, $main-columns);
+      display: block; }
   }
 }
 

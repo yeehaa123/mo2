@@ -1,9 +1,11 @@
 // ---------------------------------------------------------------------------
 // Imports
 @import "compass" ;
-@import "compass/reset";
 @import "compass/css3";
+@import "compass/reset";
 @import "compass/css3/shared";
+@import "compass/css3/transform";
+@import "compass/css3/text-shadow";
 @import "susy";
 
 // ---------------------------------------------------------------------------
@@ -15,3 +17,9 @@ $gutter-width   : 1em;
 $grid-padding   : $gutter-width;
 $break: 12;
 $show-grid-backgrounds  : false;
+
+$themeyellow 		: #F6F792;
+$themedarkblue	: #333745;
+$themelightblue	: #77C4D3;
+$themegray			: #DAEDE2;
+$themered 			: #EA2E49;
