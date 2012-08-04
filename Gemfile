@@ -11,7 +11,8 @@ gem 'bson_ext'
 
 # gem 'pdfkit'
 gem 'wicked_pdf'
-gem 'maruku'
+# gem 'maruku'
+gem 'kramdown'
   
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
