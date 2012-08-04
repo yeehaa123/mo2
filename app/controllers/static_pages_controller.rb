@@ -1,9 +1,10 @@
 class StaticPagesController < ApplicationController
   def home
+  	response.headers['Cache-Control'] = 'no-cache'
   	respond_to do |format|
       format.html
       format.pdf do
-        render 	:pdf => "home2",
+        render 	:pdf => "home",
 								:template => 'static_pages/home'
       end
     end
