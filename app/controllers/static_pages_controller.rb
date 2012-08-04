@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
   	respond_to do |format|
       format.html
       format.pdf do
-        render 	:pdf => "home",
+        render 	:pdf => "home2",
 								:template => 'static_pages/home'
       end
     end
