@@ -14,21 +14,24 @@
   font-weight: 300;
   font-size: 1em;
   text-align: justify;
+  h1, h2, h3, h4, h5, h6 { text-align: left; }
 }
 
 .banner {
   h1 {
     font-family: "museo-slab-1","museo-slab-2",serif;
     font-style: normal;
-    font-weight: 900;
-    font-size: 3em;
-    text-align: center;
+    font-weight: 700;
+    font-size: 1.8em;
+    text-align: right;
+    margin: 10px 0px;
   }
 }
 
 .pagenav {
+  font-family: "museo-slab-1","museo-slab-2",serif;
   font-size: 1.2em;
-  background-color: yellow;
+  // background-color: yellow;
   ul { 
     margin: 0;
     padding: 0;
@@ -40,6 +43,33 @@
     } 
   }
 }
+
+.main {
+  blockquote {
+    font-family: "museo-slab-1","museo-slab-2",serif;
+    font-size: 0.9em; 
+    margin: 20px 0; 
+    blockquote {
+      margin: 0; 
+      text-align: right; 
+    }
+  }
+
+  p { 
+    @include hyphenation;
+    margin: 10px 0;
+  }
+
+  h1 {
+    font-family: "museo-sans-1","museo-sans-2",sans-serif;
+    font-weight: 900;
+    font-size: 2em; 
+  }
+  .summary {
+    font-size: 0.9em;
+  }
+}
+
 
 @include at-breakpoint($break) {
   .banner { 
