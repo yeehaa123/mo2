@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
       format.html
       format.pdf do
         render 	:pdf => "home",
-								:template => 'layouts/application'
+								:template => 'static_pages/home'
       end
     end
   end
