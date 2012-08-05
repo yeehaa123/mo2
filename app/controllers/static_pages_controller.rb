@@ -1,23 +1,14 @@
 class StaticPagesController < ApplicationController
   def home
-  	respond_to do |format|
-      format.html
-      format.pdf do
-        render 	:pdf => "home",
-                :handlers => [:md, :haml],
-        				:template => "static_pages/home",
-								:layout => 'layouts/application'
-      end
-    end
   end
 
-  def home2
+  def article
   	respond_to do |format|
       format.html
       format.pdf do
-        render 	:pdf => "home2",
+        render 	:pdf => "article",
                 :handlers => [:md, :haml],
-        				:template => "static_pages/home",
+        				:template => "static_pages/article",
 								:layout => 'layouts/application'
       end
     end

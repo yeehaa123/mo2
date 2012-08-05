@@ -2,7 +2,6 @@
 // Imports
 @import "base";
 
-
 @mixin susy-grid-background {
   @include grid-background($total-columns, $column-width, $gutter-width, $base-line-height, $grid-padding, $force-fluid: true);
 }
@@ -11,6 +10,7 @@
 .grid {
   @include susy-grid-background;
 }
+
 /* -------------------------------------------------------------------------*/
 /* Layout */
 
@@ -35,12 +35,12 @@ html {
 }
 
 .banner {
-  @include inline-block;
   @include border-radius(0 0 20px 20px);
   background-color: $themeyellow;
   margin: 0 0 0 0;
   padding: 0 20px 0 20px;
   float: right;
+  height: 4.5em;
   font-weight: 300;
   h1 {
     color: $themedarkblue;
@@ -61,23 +61,52 @@ html {
   }
 }
 
+.banner:hover{
+  background-color: $themedarkblue;
+  height: 8em;
+  h1 {
+    color: $themelightblue;  
+    span#slash {
+      color: $themeyellow;
+      @include adjust-font-size-to(30px);
+      margin: 0 -0.25em 0 -0.2em;
+    }
+  }
+@include single-transition(); 
+}
+
+
+
+
 .pagenav {
+  // @include debug-vertical-alignment;
   font-family: "museo-slab-1","museo-slab-2",serif;
   @include adjust-font-size-to(18px);
-  ul { 
-    @include horizontal-list; 
+  nav { 
+    text-align: center;
+    list-style: none;
     li {
-      margin-right: 10px;
-      padding: 5px 10px;
-      background-color: $themeyellow;
+      @include inline-block;
+      float: left;
+      width: 4em;
+      height: 1.5em;
+      margin: 0 5px;
       text-align: center;
+      background-color: $themered;
+      color: $themeyellow;
       @include border-radius(0 0 5px 5px);
+    }
+    li:hover {
+      background-color: $themedarkblue;
+      color: $themelightblue;
+      height: 2em;
+      @include single-transition();
     }
   }
 }
 
+
 .main {
-  clear: both;
   blockquote {
     font-family: "museo-slab-1","museo-slab-2",serif;
     margin: 0 40px;
@@ -113,51 +142,57 @@ html {
     vertical-align: baseline;
     position: relative;
     top: -0.5em;
+    color: $themered;
+    :hover{
+      background-color: $themered;
+      color: themeyellow;
+    }
   }
 
   .summary {
     @include adjust-font-size-to(14px);
-    @include leader(8);
+    @include leader(3);
+    @include trailer(1);
     display: none;
   }
 }
 
-
 @include at-breakpoint($break) {
-  .banner { 
-    @include prefix(2,$break); 
-    display: block;
-  }
+
+  
   .pagenav { 
     @include span-columns(2,$break);
-    ul { 
-      display: block;
-      float: left;
+    nav { 
       li {
-        clear: both; 
-        display: block;
+        width: 2.5em;
+        height: 2em;  
+        @include border-radius(0 20px 20px 0);
         text-align: left;
-        margin: 0;
-        padding: 0; 
+        margin: 0.3em 0;
+        padding: 0.5em 1em; 
       } 
+      :hover{
+        width: 4em;
+      }
     }
   }
 
   .main { 
-  	$main-columns: 10;
-  	@include span-columns($main-columns omega, $break);
-  	.content { 
-      @include span-columns(7, $main-columns);
+    $main-columns: 10;
+    @include span-columns($main-columns omega, $break);
+    .content { 
+      @include span-columns(7, $main-columns);  
     } 
-  	.summary { 
+    .summary { 
       @include span-columns(3 omega, $main-columns);
       display: block; }
   }
 }
 
 .contentinfo {
-	background-color : red;
-  margin: 0 0 - $grid-padding;
+  @include border-radius(20px);
+  background-color : $themelightblue;
+  margin:  0 - $grid-padding;
   padding: 0.625em $grid-padding;
   @include adjust-font-size-to(14px);
   @include at-breakpoint($break) {

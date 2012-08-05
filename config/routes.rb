@@ -1,6 +1,6 @@
 Mo2::Application.routes.draw do
   get "static_pages/home"
-  get "static_pages/home2"
+  get "static_pages/article"
 
 
   # The priority is based upon order of creation:
