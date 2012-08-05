@@ -1,6 +1,6 @@
 # The Good Foot
 
-## James Brown's Revolutionary Rhythmic Interventions  
+### James Brown's Revolutionary Rhythmic Interventions  
 
 >> From the ocean comes a notion    
 >> that the real eyes lies in rhythm,   

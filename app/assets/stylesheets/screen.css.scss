@@ -1,114 +1,123 @@
 // ---------------------------------------------------------------------------
 // Imports
-
 @import "base";
 
+
+@mixin susy-grid-background {
+  @include grid-background($total-columns, $column-width, $gutter-width, $base-line-height, $grid-padding, $force-fluid: true);
+}
+@include establish-baseline;
+
+.grid {
+  @include susy-grid-background;
+}
 /* -------------------------------------------------------------------------*/
 /* Layout */
 
 html {
-  background-color: $themeyellow;   
+  background-color: $themegray;  
 }
 
 .page {
   @include container($total-columns, $break);
-  @include susy-grid-background;
+  // @extend .grid; 
+  @include clearfix;
   color: $themedarkblue;
   font-family: "museo-sans-1","museo-sans-2",sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 1em;
   text-align: justify;
   h1, h2, h3, h4, h5, h6 { 
     text-align: left; 
     font-family: "museo-slab-1","museo-slab-2",serif;
     color: $themered;
   }
-  sup {
-    vertical-align: 100%;
-    font-size: 0.7em; 
-  }
 }
 
 .banner {
   @include inline-block;
+  @include border-radius(0 0 20px 20px);
+  background-color: $themeyellow;
+  margin: 0 0 0 0;
+  padding: 0 20px 0 20px;
   float: right;
-  text-align: right;
+  font-weight: 300;
   h1 {
-    background-color: $themeyellow;
     color: $themedarkblue;
-    border: 5px;
-    margin: 0;
-    padding: 0 10px 0px 10px;;
-    font-weight: 300;
-    font-size: 1.8em;      
-    vertical-align: top;
-    text-align: right;
+    @include adjust-font-size-to(24px);
     @include single-text-shadow;
     letter-spacing: -0.05em;
     span#medial {
-      vertical-align: 50%;
+      vertical-align: 40%;
     }
     span#slash {
       color: $themered;
-      font-size: 2em;
-      vertical-align: -10%;
+      @include adjust-font-size-to(30px);
       margin: 0 -0.25em 0 -0.2em;
     }
     span#operations {
+      vertical-align: -5%;
     }
   }
 }
 
 .pagenav {
   font-family: "museo-slab-1","museo-slab-2",serif;
-  font-size: 1.2em;
-  // background-color: yellow;
+  @include adjust-font-size-to(18px);
   ul { 
-    display: $inline-block-alignment top;
-    float: left;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    text-align: center;
+    @include horizontal-list; 
     li {
-      display: inline-block;
-    } 
+      margin-right: 10px;
+      padding: 5px 10px;
+      background-color: $themeyellow;
+      text-align: center;
+      @include border-radius(0 0 5px 5px);
+    }
   }
 }
 
 .main {
-  clear: both;  
+  clear: both;
   blockquote {
     font-family: "museo-slab-1","museo-slab-2",serif;
-    font-size: 0.9em; 
-    font-style: italic;
-    margin: 20px 0; 
+    margin: 0 40px;
+    @include leader();
+    @include trailer();
+    @include adjust-font-size-to(14px);
+    font-style: normal;
     blockquote {
-      margin: 0; 
+      margin: 0 -40px;; 
       text-align: right; 
     }
   }
 
   p { 
     @include hyphenation;
-    margin: 10px 0;
+    // @include debug-vertical-alignment;
   }
 
   h1 {
     font-family: "museo-sans-1","museo-sans-2",sans-serif;
     font-weight: 900;
-    font-size: 2em;
+    @include adjust-font-size-to(32px);
     color: $themedarkblue;  
-
   }
 
   h2 {
+    @include leader();
+    @include adjust-font-size-to(18px);
+  }
 
+  sup {
+    @include adjust-font-size-to(10px);
+    vertical-align: baseline;
+    position: relative;
+    top: -0.5em;
   }
 
   .summary {
-    font-size: 0.9em;
+    @include adjust-font-size-to(14px);
+    @include leader(8);
     display: none;
   }
 }
@@ -121,10 +130,16 @@ html {
   }
   .pagenav { 
     @include span-columns(2,$break);
-    clear: both;
-    @include inline-block;
-    ul li {
+    ul { 
       display: block;
+      float: left;
+      li {
+        clear: both; 
+        display: block;
+        text-align: left;
+        margin: 0;
+        padding: 0; 
+      } 
     }
   }
 
@@ -143,8 +158,8 @@ html {
 .contentinfo {
 	background-color : red;
   margin: 0 0 - $grid-padding;
-  padding: 10px $grid-padding;
-  font-size: 0.9em;
+  padding: 0.625em $grid-padding;
+  @include adjust-font-size-to(14px);
   @include at-breakpoint($break) {
     clear: both;
     margin: 0;
