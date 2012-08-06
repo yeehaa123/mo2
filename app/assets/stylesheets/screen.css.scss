@@ -190,11 +190,12 @@ html {
 }
 
 .contentinfo {
-  @include border-radius(20px);
-  background-color : $themelightblue;
+  clear: both;
+  background-color: $themelightblue;
   margin:  0 - $grid-padding;
   padding: 0.625em $grid-padding;
   @include adjust-font-size-to(14px);
+  @include border-radius(20px); 
   @include at-breakpoint($break) {
     clear: both;
     margin: 0;

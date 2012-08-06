@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'jquery-rails'
-gem 'haml-rails'
+gem 'haml', "~> 3.2.0.beta.1"
+gem 'haml-rails', "~> 0.3.4"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,11 +24,10 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-	gem 'compass', '>= 0.12.2'
-	gem 'compass-rails', '>= 1.0.2'  
+  gem "compass-rails", "~> 1.0.3" 
 	gem 'susy'
 end
 
@@ -35,7 +35,7 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '1.4.0'
   gem 'cucumber-rails', '1.2.1', :require => false
-  gem 'database_cleaner', '0.7.0'
+  gem 'database_cleaner', '0.8.0'
   gem 'guard-spork', '0.3.2'  
   gem 'spork', '0.9.0'
   gem 'launchy', '2.1.0'
