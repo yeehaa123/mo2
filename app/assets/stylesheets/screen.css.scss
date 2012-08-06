@@ -47,6 +47,9 @@ html {
     @include adjust-font-size-to(24px);
     @include single-text-shadow;
     letter-spacing: -0.05em;
+    a {
+      @include unstyled-link;
+    }
     span#medial {
       vertical-align: 40%;
     }
@@ -95,11 +98,14 @@ html {
       background-color: $themered;
       color: $themeyellow;
       @include border-radius(0 0 5px 5px);
+      a {
+        @include unstyled-link;
+      }
     }
     li:hover {
       background-color: $themedarkblue;
       color: $themelightblue;
-      height: 2em;
+      height: 8em;
       @include single-transition();
     }
   }
@@ -107,6 +113,7 @@ html {
 
 
 .main {
+  clear: both;
   blockquote {
     font-family: "museo-slab-1","museo-slab-2",serif;
     margin: 0 40px;
@@ -164,20 +171,22 @@ html {
     @include span-columns(2,$break);
     nav { 
       li {
-        width: 2.5em;
+        width: 4em;
         height: 2em;  
         @include border-radius(0 20px 20px 0);
         text-align: left;
-        margin: 0.3em 0;
-        padding: 0.5em 1em; 
+        margin: 0.3em 0.5em 0.3em 0;
+        padding: 0.5em 0.5em; 
       } 
-      :hover{
-        width: 4em;
+      li:hover{
+        width: 6em;
+        height: 2em;
       }
     }
   }
 
-  .main { 
+  .main {
+    clear: none;
     $main-columns: 10;
     @include span-columns($main-columns omega, $break);
     .content { 

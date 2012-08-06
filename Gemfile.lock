@@ -102,8 +102,9 @@ GEM
     guard-spork (0.3.2)
       guard (>= 0.8.4)
       spork (>= 0.8.4)
-    haml (3.2.0.beta.1)
-      tilt
+    haml (3.1.6)
+    haml-kramdown (0.0.1)
+      haml
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -243,7 +244,8 @@ DEPENDENCIES
   growl (= 1.0.3)
   guard-rspec (= 0.5.5)
   guard-spork (= 0.3.2)
-  haml (~> 3.2.0.beta.1)
+  haml (~> 3.1.6)
+  haml-kramdown
   haml-rails (~> 0.3.4)
   jquery-rails
   kramdown
