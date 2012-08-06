@@ -1,3 +1,10 @@
+module WithinHelpers
+  def with_scope(locator)
+    locator ? within(locator) { yield } : yield
+  end
+end
+World(WithinHelpers)
+
 Given /^I am on the homepage$/ do
 	visit('/static_pages/home')
 end
@@ -12,4 +19,10 @@ Then /^I should( not)? see "([^"]*)" within "([^"]*)"$/ do |negate, text, select
 	else
 		page.should have_selector selector, text: text
 	end 
+end
+
+When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")?$/ do |link, selector|
+	with_scope(selector) do
+	  click_link(link)
+	end
 end

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'jquery-rails'
-gem 'haml', "~> 3.2.0.beta.1"
+gem 'haml', "~> 3.1.6"
 gem 'haml-rails', "~> 0.3.4"
 
 # Bundle edge Rails instead:
@@ -14,7 +14,8 @@ gem 'bson_ext'
 gem 'wicked_pdf'
 # gem 'maruku'
 gem 'kramdown'
-  
+gem 'haml-kramdown'
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '0.5.5'
