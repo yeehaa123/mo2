@@ -6,7 +6,9 @@ Feature: Overall Site Layout
 	Scenario: Visiting the Homepage
 		Given I am on the homepage
 		Then I should see "Welcome to Medial Operations"
-		And I should see "Medial Operations // Home" within "title"
+		And I should see "Medial Operations" within "title"
+		And I should not see "Medial Operations // Home" within "title"
+
 
 	Scenario: Visiting the About page
 		Given I am on the homepage
@@ -24,7 +26,7 @@ Feature: Overall Site Layout
 		Given I am on the homepage
 		And I follow "Article"
 		And I follow "Home"
-		Then I should see "Medial Operations // Home" within "title"
+		Then I should see "Medial Operations" within "title"
 		And I follow "About"
 		And I follow "" within ".banner"
-		Then I should see "Medial Operations // Home" within "title"
+		Then I should see "Medial Operations" within "title"

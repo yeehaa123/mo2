@@ -6,7 +6,7 @@ end
 World(WithinHelpers)
 
 Given /^I am on the homepage$/ do
-	visit('/static_pages/home')
+	visit root_path
 end
 
 Then /^I should( not)? see "([^"]*)"$/ do |negate, message|

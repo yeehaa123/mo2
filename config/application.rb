@@ -67,5 +67,11 @@ module Mo2
     
     # YEEHAA: Added to include pdfkit
     # config.middleware.use "PDFKit::Middleware", print_media_type: true
+
+    # YEEHAA: Suppress generate spec for views and helpers
+    config.generators do |g|
+        g.view_specs false
+        g.helper_specs false
+    end
   end
 end

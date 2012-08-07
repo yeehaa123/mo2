@@ -1,7 +1,9 @@
 Mo2::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/article"
-  get "static_pages/about"
+  root to: 'static_pages#home'
+  
+  match '/article', to: 'static_pages#article'
+  match '/about', to: 'static_pages#about'
+end
 
 
   # The priority is based upon order of creation:
@@ -60,4 +62,3 @@ Mo2::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-end

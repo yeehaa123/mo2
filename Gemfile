@@ -19,6 +19,7 @@ gem 'haml-kramdown'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '0.5.5'
+  gem 'guard-cucumber'
   gem 'mongoid-rspec'
 end
 
