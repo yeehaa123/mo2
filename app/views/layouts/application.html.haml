@@ -1,29 +1,14 @@
 !!!
 %html{ lang: "en" }
 	%head
-		%title Medial Operations // #{ yield(:title) }
+		%title= full_title(yield(:title))
 		= stylesheet_link_tag    	"application", media: "screen"
 		= javascript_include_tag 	"application"
 		= csrf_meta_tags
-		%script{ type: "text/javascript", src: "//use.typekit.net/yhk8con.js" }
-		%script{ type: "text/javascript" }
-			try{Typekit.load();}catch(e){}
+		= render 'layouts/shim'
+		= render 'layouts/typekit'
 	.page
-		.banner
-			%h1
-				= link_to 'home' do
-					%span#medial medial
-					%span#slash /
-					%span#operations operations
-		.pagenav
-			%nav
-				%li= link_to "Home", "home"
-				%li= link_to "About", "about"
-				%li= link_to "Article", "article"
-		.main
-			.summary
-				%p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-			.content
-				= yield
-		.contentinfo
-			%p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+		= render 'layouts/banner'
+		= render 'layouts/pagenav'
+		= render 'layouts/main'
+		= render 'layouts/contentinfo'
