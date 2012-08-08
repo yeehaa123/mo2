@@ -112,7 +112,6 @@ html {
 
 .main {
   clear: both;
-  @include leader(4);
   blockquote {
     color: $themebase;
     font-family: "museo-slab-1","museo-slab-2",serif;
@@ -141,7 +140,6 @@ html {
     font-weight: 700;
     @include adjust-font-size-to(32px);
     color: $themebase;
-    @include leader(-2);
   }
 
   h1 + h2 {
@@ -221,6 +219,7 @@ html {
 
   .main {
     clear: none;
+    margin: 0;
     $main-columns: 10;
     @include span-columns($main-columns omega, $break);
     .content { 
