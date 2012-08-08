@@ -16,11 +16,20 @@ $base-font-size 				: 16px;
 // $themegray				: #262B30;
 // $themered 				: #C51C30;
 
+// Accents
 $themebase 				: #F2F2F2;
-$themebackground 	: #322D2A;
 $themehighlight1 	: #D9910B;
 $themehighlight2 	: #F2E205;
 $themehighlight3 	: #BF2121;
+
+// Shades of Gray
+$themebackground 	: #322D2A;
+$themebackground2 : #332E2B;
+$themebackground3 : #3F3835;
+$themebackground4 : #7E726A;
+$themebackground5 : #BEABA0;
+
+
 
 
 // ---------------------------------------------------------------------------
@@ -29,3 +38,4 @@ $themehighlight3 	: #BF2121;
 @import "susy";	
 @import "compass" ;
 @import "compass/reset";
+@import "compass/utilities";
