@@ -12,7 +12,6 @@ class StaticPagesController < ApplicationController
       format.pdf do
         render 	:pdf => "article",
                 :handlers => [:md, :haml],
-        				:template => "static_pages/article",
 								:layout => 'layouts/application'
       end
     end
