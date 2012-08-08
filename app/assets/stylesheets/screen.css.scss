@@ -11,8 +11,11 @@
   @include susy-grid-background;
 }
 
+
+
 /* -------------------------------------------------------------------------*/
 /* Layout */
+
 
 html {
   background-color: $themebackground;  
@@ -22,7 +25,7 @@ html {
   @include container($total-columns, $break);
   // @extend .grid; 
   @include clearfix;
-  color: $themebase;
+  color: $themebackground5;
   font-family: "museo-sans-1","museo-sans-2",sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -35,17 +38,17 @@ html {
 }
 
 .banner {
-  @include border-radius(0 0 20px 20px);
-  background-color: $themehighlight2;
+  @include border-radius(0 0 0.5em 0.5em);
+  @include single-box-shadow(inset, black, 0em, -0.1em, 0.2em);
+  background-color: $themebackground3;
   margin: 0 0 0 0;
-  padding: 0 20px 0 20px;
+  padding: 0 1em 0 1em;
   float: right;
-  height: 4.5em;
-  font-weight: 300;
+  height: 4em;
+  font-weight: 500;
   h1 {
-    color: $themehighlight3;
-    @include adjust-font-size-to(24px);
-    @include single-text-shadow;
+    color: $themebackground4;
+    @include adjust-font-size-to(20px);
     letter-spacing: -0.05em;
     a {
       @include unstyled-link;
@@ -54,8 +57,8 @@ html {
       vertical-align: 40%;
     }
     span#slash {
-      color: $themebase;
-      @include adjust-font-size-to(30px);
+      color: $themehighlight3;
+      @include adjust-font-size-to(25px);
       margin: 0 -0.25em 0 -0.2em;
     }
     span#operations {
@@ -63,63 +66,67 @@ html {
     }
   }
   &:hover{
-    background-color: $themehighlight3;
-    height: 8em;
-    h1 {
-      color: $themehighlight1;  
-      span#slash {
-        color: $themebase;
-        @include adjust-font-size-to(30px);
-        margin: 0 -0.25em 0 -0.2em;  
-      }
-    }
+    height: 4em;
+    background-color: $themehighlight2;
     @include single-transition();
+    h1{
+      color: $themebackground2;
+    }
   }
 }
 
 .pagenav {
   // @include debug-vertical-alignment;
   font-family: "museo-slab-1","museo-slab-2",serif;
-  @include adjust-font-size-to(18px);
+  @include adjust-font-size-to(14px);
   nav { 
     text-align: center;
     list-style: none;
     li {
       @include inline-block;
       float: left;
-      width: 4em;
-      height: 1.5em;
-      margin: 0 5px;
+      width: 6em;
+      height: 2em;
+      margin: 0 0.5em 0 0;
       text-align: center;
-      background-color: $themehighlight2;
-      color: $themehighlight3;
-      @include border-radius(0 0 5px 5px);
+      font-weight: 500;
+      @include single-box-shadow(inset, black, 0em, -0.1em, 0.2em);
+      background-color: $themebackground3;
+      color: $themebackground4;
+      @include border-radius(0 0 0.4em 0.4em);
       a {
         @include unstyled-link;
       }
       &:hover {
+        height: 2em;
         background-color: $themehighlight3;
-        color: $themehighlight1;
-        height: 8em;
-        @include single-transition();
+        color: $themebase;
       }
     }
+  }
+  &:hover {
+    @include single-transition();
   }
 }
 
 .main {
   clear: both;
   blockquote {
+    color: $themebase;
     font-family: "museo-slab-1","museo-slab-2",serif;
     margin: 0 40px;
     @include leader();
     @include trailer();
     @include adjust-font-size-to(14px);
-    font-style: normal;
+    font-weight: 500;
     blockquote {
       margin: 0 -40px;; 
       text-align: right; 
     }
+  }
+
+  h2 + blockquote {
+    @include leader(0);
   }
 
   p { 
@@ -128,26 +135,31 @@ html {
   }
 
   h1 {
+    @include leader(2);
     font-family: "museo-sans-1","museo-sans-2",sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     @include adjust-font-size-to(32px);
-    color: $themehighlight3;  
+    color: $themebase;  
+  }
+
+  h1 + h2 {
+    @include leader(0);
   }
 
   h2 {
-    @include leader();
+    @include leader(2);
+    @include trailer();
     @include adjust-font-size-to(18px);
   }
 
   sup {
-    @include adjust-font-size-to(10px);
+    @include adjust-font-size-to(12px);
     vertical-align: baseline;
     position: relative;
     top: -0.5em;
     color: $themehighlight2;
     &:hover{
       background-color: $themehighlight2;
-      color: themehighlight3;
     }
   }
 
@@ -155,8 +167,8 @@ html {
     @include unstyled-link;
     color: $themehighlight2;
     &:hover {
-      background-color: $themehighlight2;
-      color: $themebackground;
+      background-color: $themehighlight3;
+      color: $themehighlight2;
     }
   }
 
@@ -173,16 +185,17 @@ html {
   
   .pagenav { 
     @include span-columns(2,$break);
+    @include adjust-font-size-to(16px);
     nav { 
       li {
-        width: 4em;
+        width: 5em;
         height: 2em;  
-        @include border-radius(0 20px 20px 0);
-        text-align: left;
+        @include border-radius(0.3em);
+        text-align: center;
         margin: 0.3em 0.5em 0.3em 0;
         padding: 0.5em 0.5em;  
         &:hover{
-          width: 6em;
+          width: 5em;
           height: 2em;
         }
       }
@@ -195,7 +208,13 @@ html {
     @include span-columns($main-columns omega, $break);
     .content { 
       @include span-columns(7, $main-columns);  
-    } 
+    }
+    h1 {
+      @include leader(0);
+      font-family: "museo-sans-1","museo-sans-2",sans-serif;
+      font-weight: 900;
+      @include adjust-font-size-to(32px);
+    }
     .summary { 
       @include span-columns(3 omega, $main-columns);
       display: block; }
@@ -204,15 +223,19 @@ html {
 
 .contentinfo {
   clear: both;
-  background-color: $themehighlight3;
-  color: $themehighlight1;
-  margin:  0 - $grid-padding;
-  padding: 0.625em $grid-padding;
+  background-color: $themebackground3;
+  @include single-box-shadow(inset, black, 0em, 0.1em, 0.2em);
+  color: $themebase;
+  margin:  0 - $grid-padding; 
+  @include leader(1);
+  @include trailer(1);
+  padding: 2em $grid-padding;
   @include adjust-font-size-to(14px);
-  @include border-radius(20px); 
+  @include border-radius(0.3em);
+  &:hover{
+  }
   @include at-breakpoint($break) {
     clear: both;
-    margin: 0;
     @include pad(2,3,$break);
   }
 }

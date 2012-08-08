@@ -65,6 +65,15 @@ module Mo2
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
+    # YEEHAA - Recommended by Devise
+    # If you are deploying Rails 3.1 on Heroku, you may want to set:
+
+    #    config.assets.initialize_on_precompile = false
+
+    #  On config/application.rb forcing your application to not access the DB
+    #  or load models when precompiling your assets.
+    config.assets.initialize_on_precompile = false
+    
     # YEEHAA: Added to include pdfkit
     # config.middleware.use "PDFKit::Middleware", print_media_type: true
 
@@ -73,5 +82,9 @@ module Mo2
         g.view_specs false
         g.helper_specs false
     end
+
+    # Yeehaa: Prevent Logging of Passwords
+    # See: http://railsapps.github.com/tutorial-rails-mongoid-devise.html 
+    config.filter_parameters += [:password, :password_confirmation]
   end
 end

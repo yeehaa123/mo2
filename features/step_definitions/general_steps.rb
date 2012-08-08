@@ -26,3 +26,7 @@ When /^(?:|I )follow "([^"]*)"(?: within "([^"]*)")?$/ do |link, selector|
 	  click_link(link)
 	end
 end
+
+Then /^show me the page$/ do
+  save_and_open_page
+end

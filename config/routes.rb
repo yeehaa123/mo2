@@ -1,5 +1,9 @@
 Mo2::Application.routes.draw do
   root to: 'static_pages#home'
+
+  devise_for :users
+  
+  resources :users, only: :show
   
   match '/article', to: 'static_pages#article'
   match '/about', to: 'static_pages#about'

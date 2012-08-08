@@ -10,6 +10,8 @@ gem 'haml-rails', "~> 0.3.4"
 gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
+gem 'devise'
+
 # gem 'pdfkit'
 gem 'wicked_pdf'
 # gem 'maruku'
