@@ -51,5 +51,9 @@ class User
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
+<<<<<<< HEAD
   before_save { self.email.downcase }
+=======
+  before_save { |user| user.email = email.downcase }
+>>>>>>> 0790bd81074101c0adf32b845903826948bf1ccd
 end
