@@ -12,7 +12,7 @@ Feature: Overall Site Layout
 	Scenario: Visiting the Article page
 		Given I am on the homepage
 		And I follow "article"
-		Then I should see "Towards a New Intellectual"
+		Then I should see "The Good Foot"
 		And I should see "Medial Operations // Article" within "title"
 
 	Scenario: Return to Homepage

@@ -14,7 +14,7 @@ end
 Spork.each_run do
   # this is the important part, still calling initialize on each run
   # because this is when the mongoid models get preloaded
-  Mo2::Application.initialize!
+  # Mo2::Application.initialize!
 
   RSpec.configure do |config|
     config.mock_with :rspec
@@ -64,16 +64,9 @@ require 'rspec/rails'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.mock_with :rspec
 
-  # Clean up the database
-  require 'database_cleaner'
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.orm = "mongoid"
+  config.before :each do
+    Mongoid.purge!
   end
-
-  config.before(:each) do
-    DatabaseCleaner.clean
-  end
-
 end

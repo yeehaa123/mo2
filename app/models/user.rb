@@ -11,8 +11,11 @@ class User
   field :encrypted_password, :type => String, :default => ""
 
   validates_presence_of :email
+  index({ email: 1 }, { unique: true, name: "index_users_on_email" })
+
   validates_presence_of :encrypted_password
-  
+  validates_presence_of :password_confirmation
+
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
@@ -42,8 +45,11 @@ class User
   # field :authentication_token, :type => String
 
   field :name
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
+  validates :name, presence: true, uniqueness: true, length: { maximum: 50}
+  
+  validates_uniqueness_of :name, :email, case_sensitive: false
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+
+  before_save { self.email.downcase }
 end
