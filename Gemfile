@@ -22,7 +22,7 @@ gem 'haml-kramdown'
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '0.5.5'
-  gem 'guard-cucumber'
+  # gem 'guard-cucumber'
   gem 'mongoid-rspec'
 end
 
@@ -39,7 +39,8 @@ end
 group :test do
   gem 'capybara', '1.1.2'
   gem 'factory_girl_rails', '1.4.0'
-  gem 'cucumber-rails', '1.2.1', :require => false
+  # gem 'cucumber-rails', '1.2.1', :require => false
+  gem 'turnip'
   gem 'database_cleaner', '0.8.0'
   gem 'guard-spork', '0.3.2'  
   gem 'spork', '0.9.0'

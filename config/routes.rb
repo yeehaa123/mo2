@@ -2,9 +2,24 @@ Mo2::Application.routes.draw do
   root to: 'static_pages#home'
 
   devise_for :users
+
+  devise_scope :user do
+    # devise/registrations
+    get 'signup' => 'devise/registrations#new'
+    post 'signup' => 'devise/registrations#create'
+    get 'users/cancel' => 'devise/registrations#cancel'
+    get 'users/edit' => 'devise/registrations#edit'
+    put 'users' => 'devise/registrations#update'
+    delete 'users/cancel' => 'devise/registrations#destroy'
+
+    # devise/sessions
+    get 'signin' => 'devise/sessions#new'
+    post 'signin' => 'devise/sessions#create'
+    get 'signout' => 'devise/sessions#destroy'
+  end
   
-  resources :users, only: :show
-  
+  resources :users
+
   match '/article', to: 'static_pages#article'
   match '/about', to: 'static_pages#about'
 end

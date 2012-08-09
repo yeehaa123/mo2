@@ -1,5 +1,5 @@
 require 'rubygems'
-
+require 'turnip/capybara'
 require 'spork'
 
 Spork.prefork do
@@ -62,6 +62,7 @@ require 'rspec/rails'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir.glob("spec/step_definitions/**/*steps.rb") { |f| load f, true }
 
 RSpec.configure do |config|
   config.mock_with :rspec
