@@ -1,10 +1,3 @@
-# module WithinHelpers
-#   def with_scope(locator)
-#     locator ? within(locator) { yield } : yield
-#   end
-# end
-# World(WithinHelpers)
-
 step "I am on the homepage" do
  	visit "/"
 end
@@ -35,7 +28,7 @@ end
 
 
 step "I follow :link within :selector" do |link, selector|
-	with_scope(selector) do
+with_scope(selector) do
 	  click_link(link)
 	end
 end

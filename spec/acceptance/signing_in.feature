@@ -5,8 +5,8 @@ Feature: Signing in
 
 	Scenario: Signing in via confirmation
 		Given there are the following users:
-			| name 	| email 							| password 	| unconfirmed 	|
-			| user 	| user@example.com 		| please 		| true 					|
+			| name 	| email 						| password 	| password_confirmation | unconfirmed 	|
+			| user 	| user@example.com 	| please 		| please 								| true 					|
 		And "user@example.com" opens the email with subject "Confirmation instructions"
 		And they click the first link in the email
 		Then I should see "Your account was successfully confirmed"
@@ -14,6 +14,6 @@ Feature: Signing in
 
 	Scenario: Signing in via form
 		Given there are the following users:
-			| name 	| email 							| password |
-			| user 	| user@example.com 		| please   |
+			| name 	| email 						| password 	| password_confirmation |
+			| user 	| user@example.com 	| please   	| please 								|
 		And I am signed in as them

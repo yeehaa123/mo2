@@ -77,9 +77,9 @@
 #   open_email(address)
 # end
 
-# When /^(?:I|they|"([^"]*?)") opens? the email with subject "([^"]*?)"$/ do |address, subject|
-#   open_email(address, :with_subject => subject)
-# end
+step ":address opens the email with subject :subject" do |address, subject|
+  open_email(address, with_subject: subject)
+end
 
 # When /^(?:I|they|"([^"]*?)") opens? the email with subject \/([^"]*?)\/$/ do |address, subject|
 #   open_email(address, :with_subject => Regexp.new(subject))
@@ -179,9 +179,9 @@
 #   visit_in_email(link)
 # end
 
-# When /^(?:I|they) click the first link in the email$/ do
-#   click_first_link_in_email
-# end
+step "I/they click the first link in the email" do
+  click_first_link_in_email
+end
 
 # #
 # # Debugging

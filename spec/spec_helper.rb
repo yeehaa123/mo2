@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'turnip/capybara'
 require 'spork'
+require "email_spec"
 
 Spork.prefork do
   ENV["RAILS_ENV"] ||= 'test'
@@ -70,4 +71,10 @@ RSpec.configure do |config|
   config.before :each do
     Mongoid.purge!
   end
+end
+
+# YEEHAA email_spec
+RSpec.configure do |config|
+  config.include(EmailSpec::Helpers)
+  config.include(EmailSpec::Matchers)
 end
