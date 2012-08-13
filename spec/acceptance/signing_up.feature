@@ -6,7 +6,7 @@ I want to be able to sign up
 	Scenario: Signing up
 		Given I am on the homepage
 		When I follow "sign up"
-		Then I should see "Sign up" within ".content h2"
+		Then I should see "Sign up" within "h1"
 		And I should see "Sign up" within "title"
 		When I fill in "Name" with "Dada"
 		And I fill in "Email" with "user@example.com"

@@ -5,7 +5,7 @@
 			%li
 				= link_to('sign out', destroy_user_session_path, :method=>'delete')
 			%li
-				= link_to('account', edit_user_registration_path)
+				= link_to('profile', user_path(current_user))
 		- else
 			%li
 				= link_to('sign in', new_user_session_path)

@@ -7,7 +7,7 @@ Feature: Overall Site Layout
 		Given I am on the homepage
 		Then I should see "Welcome to Medial Operations"
 		And I should see "Medial Operations" within "title"
-		And I should not see "Medial Operations // Home" within "title"
+		And I should not see "Home" within "title"
 
 	Scenario: Visiting the Article page
 		Given I am on the homepage
@@ -20,3 +20,17 @@ Feature: Overall Site Layout
 		And I follow "article"
 		And I follow "" within ".banner"
 		Then I should see "Medial Operations" within "title"
+
+	Scenario: Visiting the Signup page
+		Given I am on the homepage
+		And I follow 'sign up'
+		Then I should see "Sign up" within "h1"
+		And I should see "Medial Operations // Sign up" within "title"
+
+	Scenario: Visiting the Profile page
+		Given a user exists
+		And I am signed in as them
+		And I visit my profile page
+		Then show me the page
+		Then I should see "#{ @user.name} " within "h1"
+		And I should see "Medial Operations // #{ @user.name }" within "title"		

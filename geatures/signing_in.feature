@@ -4,16 +4,16 @@ Feature: Signing in
 	I want to be able to sign in
 
 	Scenario: Signing in via confirmation
-		Given there are the following users:
-			| name 	| email 							| password 	| unconfirmed 	|
-			| user 	| user@example.com 		| please 		| true 					|
+		Given the following user exists:
+			| name 	| unconfirmed 	|
+			| user 	| true 					|
 		And "user@example.com" opens the email with subject "Confirmation instructions"
 		And they click the first link in the email
 		Then I should see "Your account was successfully confirmed"
 		And I should see "Signed in as user@example.com"
 
 	Scenario: Signing in via form
-		Given there are the following users:
-			| name 	| email 							| password |
-			| user 	| user@example.com 		| please   |
+		Given a user exists
 		And I am signed in as them
+		Then I should see "Signed in as user@example.com"
+		And I should see "Signed in succesfully"

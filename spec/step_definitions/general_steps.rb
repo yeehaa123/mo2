@@ -19,7 +19,7 @@ end
 # end
 
 step "I should see :message within :selector" do |message, selector|
-	page.should have_selector selector, text: message
+	page.should have_selector selector, content: message
 end
 
 step "I should not see :message within :selector" do |message, selector|

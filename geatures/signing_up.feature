@@ -3,7 +3,7 @@ In order to be attributed for my work
 As a user
 I want to be able to sign up
 
-	Scenario: Signing up
+	Scenario: Signing up with valid information
 		Given I am on the homepage
 		When I follow "sign up"
 		And I fill in "Name" with "Dada"

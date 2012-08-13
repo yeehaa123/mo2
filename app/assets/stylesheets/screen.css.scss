@@ -126,6 +126,24 @@ html {
     }
   }
 
+  .flash {
+    @include adjust-font-size-to(14px);
+    padding: 0.4em;
+    margin: 0 -0.4em;
+    @include leader(1);
+    @include trailer(1);
+    width: 100%;
+    &.flash_notice{
+      background-color: $themehighlight2;
+    }
+    &.flash_alert{
+      background-color: $themehighlight3;
+    }
+    &.flash_success{
+      background-color: $themehighlight1;
+    }
+  }
+
   h2 + blockquote {
     @include leader(0);
   }
@@ -159,6 +177,57 @@ html {
   //   margin: 0 0 - $grid-padding;
   //   @include trailer(0);
   // }
+
+  
+  // Form
+
+  input, textarea, select, .uneditable-input {
+    background-color: $themebackground3;
+    width: 100%;
+    padding: 10px;
+    height: auto;
+    margin-bottom: 15px;
+    @include box-sizing(border-box);
+    @include single-box-shadow(inset, black, 0em, -0.1em, 0.2em);
+    &.btn{
+      background-color: $themebackground5;
+    }
+    &.checkbox{
+      @include inline-block;
+      width: 5%;
+      float: left;
+    }
+    &.checkbox-label{
+      @include inline-block;
+      width: 45%;
+      float: left;
+    }
+  }
+
+  // Errors
+  #error_explanation{
+    background-color: $themebackground3;
+    @include adjust-font-size-to(12px);
+    @include border-radius(0.5em);
+    @include single-box-shadow(inset, black, 0em, -0.1em, 0.2em);
+    margin: 0.5em 0 0.5em 0;
+    padding: 1em;
+    color: $themehighlight3;
+    h2{
+      @include leader(0);
+      @include trailer(0);
+    }
+    ul {
+      list-style: none;
+      margin: 0 0 1em 0;
+    }
+  }
+
+  .field_with_errors input {
+    background-color: $themehighlight3;
+    color: $themebase;
+  }
+
 
   sup {
     @include adjust-font-size-to(12px);
