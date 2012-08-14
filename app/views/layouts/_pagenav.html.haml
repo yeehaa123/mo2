@@ -1,16 +1,13 @@
 .pagenav
 	%nav
-		%li= link_to "home", root_path
 		%li= link_to "article", article_path
 		- if user_signed_in?
+			%li= link_to('sign out', signout_path, method:'delete')
 			%li
 				= link_to "users", '#'
 				%ul.dropdown
-					%li= link_to('sign out', signout_path, method:'delete')
 					%li= link_to('profile', user_path(current_user))
+					%li= link_to('settings', edit_user_registration_path(current_user))
 		- else
-			%li
-				= link_to "users", '#'
-				%ul.dropdown
-					%li= link_to('sign in', new_user_session_path)
-					%li= link_to('sign up', new_user_registration_path)
+			%li= link_to('sign in', new_user_session_path)
+			%li= link_to('sign up', new_user_registration_path)

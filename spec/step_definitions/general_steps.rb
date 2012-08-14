@@ -45,3 +45,20 @@ end
 step "I should see a link to the :page_name page" do |page_name|
 	page.should have_link(page_name)
 end
+
+step "I should not see a link to the :page_name page" do |page_name|
+	page.should_not have_link(page_name)
+end
+
+step "I should see a link :link_name to :url" do |link_name, url|
+	page.should have_link(link_name, href: url)
+end
+
+step "I should be able to sign out" do
+	page.should have_link("sign out", href: signout_path)
+	# page.should have_link("sign out", href: signout_path, method: :delete)
+end
+
+step "I should see a flash :flash_kind" do |flash_kind|
+	page.should have_selector("div.flash_#{ flash_kind }")
+end

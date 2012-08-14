@@ -1,6 +1,7 @@
-%h1
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+- provide(:title, "Edit User")
+%h1 Update your profile
+= form_for(resource, as: resource_name, url: registration_path(resource_name), 
+           html: { :method => :put }) do |f|
   = devise_error_messages!
   %div
     =f.label :name
@@ -24,7 +25,9 @@
     %i (we need your current password to confirm your changes)
     %br/
     = f.password_field :current_password
-  %div= f.submit "Update", class: "btn"
+  %div= f.submit "Save changes", class: "btn"
+= gravatar_for @user
+= link_to "change", "http://gravatar.com/emails", target: "_blank"
 %h3 Cancel my account
 %p
   Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.

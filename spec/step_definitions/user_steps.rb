@@ -22,6 +22,18 @@ step "I visit my profile page" do
   visit user_path(@user)
 end
 
+step "I visit my settings page" do
+  visit edit_user_registration_path(@user)
+end
+
+step "I could go to my profile page" do
+  page.should have_link("profile", href: user_path(@user))
+end
+
+step "I could go to my settings page" do
+  page.should have_link("settings", href: edit_user_registration_path(@user))
+end
+
 # step "I am signed in as :email" do |email|
 # 	@user = User.find_by_email!(email)
 # 	step "I am signed in as them"

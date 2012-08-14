@@ -14,7 +14,6 @@ class User
   index({ email: 1 }, { unique: true, name: "index_users_on_email" })
 
   validates_presence_of :encrypted_password
-  validates_presence_of :password_confirmation
 
   ## Recoverable
   field :reset_password_token,   :type => String

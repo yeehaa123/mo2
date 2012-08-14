@@ -106,6 +106,7 @@ html {
     }
     ul.dropdown{
       display: none;
+      z-axis: 9999;
       li {
         @include border-radius(0 0 0 0);
         &:first-child{

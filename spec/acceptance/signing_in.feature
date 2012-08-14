@@ -10,15 +10,20 @@ Feature: Signing in
 		And "user@example.com" opens the email with subject "Confirmation instructions"
 		And they click the first link in the email
 		Then I should see "Your account was successfully confirmed"
-		And I should see "Signed in as user@example.com"
+		And I should see "user" within "title"
 
+	@javascript
 	Scenario: Signing in via form with valid information
 		Given a user exists
 		And I am signed in as them
-		Then I should see "Signed in as user@example.com"
-		And I should see "Signed in successfully" within "div.flash"
-		And I should see a link to the "profile" page
-		And I should see a link to the "sign out" page
+		Then I should see "Signed in successfully" within "div.flash"
+		And I should see "user" within "title"
+		And I could go to my profile page
+		And I could go to my settings page
+		And I could sign out
+		And I should not see a link to the "sign up" page
+		And I should not see a link to the "sign in" page
+
 		When I follow 'article'
 		Then I should not see "Signed in successfully" within "div.flash"
 
