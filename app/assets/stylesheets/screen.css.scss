@@ -129,7 +129,7 @@ html {
   .flash {
     @include adjust-font-size-to(14px);
     padding: 0.4em;
-    margin: 0 -0.4em;
+    margin: 0 -0.4em; 
     @include leader(1);
     @include trailer(1);
     width: 100%;
