@@ -19,7 +19,7 @@ end
 # end
 
 step "I should see :message within :selector" do |message, selector|
-	page.should have_selector selector, content: message
+	page.should have_selector selector, text: message
 end
 
 step "I should not see :message within :selector" do |message, selector|
@@ -40,4 +40,8 @@ end
 
 step "show me the page" do
   save_and_open_page
+end
+
+step "I should see a link to the :page_name page" do |page_name|
+	page.should have_link(page_name)
 end

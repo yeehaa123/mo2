@@ -27,10 +27,15 @@ Feature: Overall Site Layout
 		Then I should see "Sign up" within "h1"
 		And I should see "Medial Operations // Sign up" within "title"
 
+	Scenario: Visiting the Signin page
+		Given I am on the homepage
+		And I follow 'sign in'
+		Then I should see "Sign in" within "h1"
+		And I should see "Medial Operations // Sign in" within "title"
+
 	Scenario: Visiting the Profile page
 		Given a user exists
 		And I am signed in as them
 		And I visit my profile page
-		Then show me the page
-		Then I should see "#{ @user.name} " within "h1"
-		And I should see "Medial Operations // #{ @user.name }" within "title"		
+		Then I should see my name within "h1"
+		And I should see my name within "title"		
