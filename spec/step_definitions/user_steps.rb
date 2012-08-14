@@ -26,3 +26,7 @@ end
 # 	@user = User.find_by_email!(email)
 # 	step "I am signed in as them"
 # end
+
+step "I should see my/his :name within :selector" do |name, selector|
+  page.should have_selector selector, text: @user_name
+end
