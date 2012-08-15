@@ -37,6 +37,5 @@ Feature: Signing in
 	Scenario: Signin out
 		Given a user exists
 		And I am signed in as them
-		Then show me the page
 		And I follow "sign out"
 		Then I should see a link to the "sign in" page

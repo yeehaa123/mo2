@@ -21,6 +21,10 @@ FactoryGirl.factories.each do |factory|
       @user.save!
     end
 
+    step "I am a user" do
+      @user = FactoryGirl.create(factory.name)
+    end
+
     step ":count #{human_name.pluralize} exist" do |count|
       FactoryGirl.create_list(factory.name, count.to_i)
     end

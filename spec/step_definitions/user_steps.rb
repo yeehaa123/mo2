@@ -17,12 +17,15 @@ step "I am signed in as them" do
   step "I should see 'Signed in successfully.'"
 end
 
-
 step "I visit my profile page" do
   visit user_path(@user)
 end
 
 step "I visit my settings page" do
+  visit edit_user_registration_path(@user)
+end
+
+step "he visits his settings page" do
   visit edit_user_registration_path(@user)
 end
 

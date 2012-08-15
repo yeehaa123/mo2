@@ -1,5 +1,5 @@
 Feature: Editing User Information
-	As a user
+	As a signed-in user
 	I want to be able to edit my profile
 
 	Background:
@@ -22,6 +22,5 @@ Feature: Editing User Information
 
 		When "new@example.com" opens the email with subject "Confirmation instructions"
 		And they click the first link in the email
-		Then show me the page
 		And I should see a flash notice
 		Then I should see "Your account was successfully confirmed"
