@@ -1,3 +1,4 @@
 - provide(:title, @user.name)
 %h1= @user.name
-= image_tag(@user.image, alt: @user.name)
+- if @user.image
+	= image_tag(@user.image, alt: @user.name)
