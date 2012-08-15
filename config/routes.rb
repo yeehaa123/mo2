@@ -3,7 +3,7 @@ Mo2::Application.routes.draw do
   
   resources :users
 
-  match '/auth/facebook/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create'
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'signin', to: 'sessions#new', as: 'signin'
   match 'auth/failure', to: redirect('/')

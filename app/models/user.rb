@@ -5,6 +5,12 @@ class User
   field :name, type: String
   field :email, type: String
   field :image, type: String
+
+  
+
+
+
+  
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end

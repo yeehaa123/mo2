@@ -1,3 +1,5 @@
+- provide(:title, "Sign in")
+%h1 Sign in
 = form_tag "/auth/identity/callback" do
   .field
     = label_tag :auth_key, "Email"
@@ -7,4 +9,4 @@
     = label_tag :password
     %br
       = password_field_tag :password
-  .btn= submit_tag "Login"
+  .btn= submit_tag "Sign in"

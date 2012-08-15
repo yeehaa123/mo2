@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :identity do
-    name "MyString"
-    email "MyString"
-    password_digest "MyString"
+    name "Yeehaa"
+    email "yeehaa@yeehaa.haa"
+    password_digest "please"
   end
 end

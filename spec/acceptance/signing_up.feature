@@ -13,7 +13,7 @@ I want to be able to sign up
 		And I fill in "Password" with "please"
 		And I fill in "Password confirmation" with "please"
 		And I press "Sign up"
-		Then I should see "A message with a confirmation link has been sent to your email address"
+		Then I should see "Signed in"
 
 	Scenario: Signing up with invalid information
 		Given I am on the homepage

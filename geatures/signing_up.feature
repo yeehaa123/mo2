@@ -11,4 +11,5 @@ I want to be able to sign up
 		And I fill in "Password" with "please"
 		And I fill in "Password confirmation" with "please"
 		And I press "Sign up"
-		Then I should see "A message with a confirmation link has been sent to your email address."
+		Then show me the page
+		Then I should see "Signed in!"

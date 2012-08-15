@@ -16,14 +16,14 @@ FactoryGirl.factories.each do |factory|
     end
 
     step "a(n) #{human_name} exists" do
-      @user = FactoryGirl.create(factory.name)
-      @user.confirm!
+      @user = FactoryGirl.create(:identity)
+      # @user.confirm!
       @user.save!
     end
 
     step "there is another user" do
       @user2 = FactoryGirl.create(:user, name: "wrong", email: "wrong@example.org")
-      @user2.confirm!
+      # @user2.confirm!
       @user2.save!
     end
 
