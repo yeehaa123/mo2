@@ -2,7 +2,13 @@ Mo2::Application.routes.draw do
   root to: 'static_pages#home'
   
   resources :users
+
   match '/auth/facebook/callback', to: 'sessions#create'
+  match 'signout', to: 'sessions#destroy', as: 'signout'
+  match 'signin', to: 'sessions#new', as: 'signin'
+  match 'auth/failure', to: redirect('/')
+  resources :identities
+
   match '/article', to: 'static_pages#article'
   match '/about',   to: 'static_pages#about'
 end

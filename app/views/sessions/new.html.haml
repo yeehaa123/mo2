@@ -1,0 +1,10 @@
+= form_tag "/auth/identity/callback" do
+  .field
+    = label_tag :auth_key, "Email"
+    %br
+      = text_field_tag :auth_key
+  .field
+    = label_tag :password
+    %br
+      = password_field_tag :password
+  .btn= submit_tag "Login"

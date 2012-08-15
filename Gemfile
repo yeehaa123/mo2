@@ -10,7 +10,10 @@ gem 'haml-rails', "~> 0.3.4"
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
+
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'omniauth-facebook'
+gem 'omniauth-identity'
 
 # gem 'pdfkit'
 gem 'wicked_pdf'
