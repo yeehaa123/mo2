@@ -12,7 +12,6 @@ Feature: Signing in
 		Then I should see "Your account was successfully confirmed"
 		And I should see "user" within "title"
 
-	@javascript
 	Scenario: Signing in via form with valid information
 		Given a user exists
 		And I am signed in as them
@@ -20,7 +19,7 @@ Feature: Signing in
 		And I should see "user" within "title"
 		And I could go to my profile page
 		And I could go to my settings page
-		And I could sign out
+		And I should be able to sign out
 		And I should not see a link to the "sign up" page
 		And I should not see a link to the "sign in" page
 

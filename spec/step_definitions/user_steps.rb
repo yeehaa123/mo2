@@ -22,11 +22,11 @@ step "I visit my profile page" do
 end
 
 step "I visit my settings page" do
-  visit edit_user_registration_path(@user)
+  visit edit_user_registration_path
 end
 
-step "he visits his settings page" do
-  visit edit_user_registration_path(@user)
+step "I visit the settings page of this other user" do
+  visit edit_user_registration_path(@user2)
 end
 
 step "I could go to my profile page" do
@@ -44,4 +44,9 @@ end
 
 step "I should see my/his :name within :selector" do |name, selector|
   page.should have_selector selector, text: @user_name
+end
+
+step "I should be able to sign out" do
+  # page.should have_link("sign out", href: signout_path)
+  page.should have_link("sign out", href: signout_path, method: :delete)
 end

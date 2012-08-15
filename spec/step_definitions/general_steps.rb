@@ -54,11 +54,15 @@ step "I should see a link :link_name to :url" do |link_name, url|
 	page.should have_link(link_name, href: url)
 end
 
-step "I should be able to sign out" do
-	page.should have_link("sign out", href: signout_path)
-	# page.should have_link("sign out", href: signout_path, method: :delete)
-end
-
 step "I should see a flash :flash_kind" do |flash_kind|
 	page.should have_selector("div.flash_#{ flash_kind }")
+end
+
+step "I submit to the users path" do
+	put edit_user_registration_path(@user)
+end
+
+step "I should get a :response_number response" do |response_number|
+	assert [response_number.to_i].include?(@integration_session.status), 
+		"Expected status to be #{ response_number }, got #{ @integration_session.status }"
 end

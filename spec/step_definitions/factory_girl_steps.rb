@@ -21,6 +21,12 @@ FactoryGirl.factories.each do |factory|
       @user.save!
     end
 
+    step "there is another user" do
+      @user2 = FactoryGirl.create(:user, name: "wrong", email: "wrong@example.org")
+      @user2.confirm!
+      @user2.save!
+    end
+
     step "I am a user" do
       @user = FactoryGirl.create(factory.name)
     end

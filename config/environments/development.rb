@@ -35,4 +35,7 @@ Mo2::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV['FACEBOOK_KEY'] = "298374053604013";
+  ENV['FACEBOOK_SECRET'] = "17fc0288d2f5f0f5fc201ff8e60651d5";
 end
