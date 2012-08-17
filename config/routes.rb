@@ -6,7 +6,7 @@ Mo2::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
   match 'signout', to: 'sessions#destroy', as: 'signout'
   match 'signin', to: 'sessions#new', as: 'signin'
-  match 'auth/failure', to: redirect('/')
+  match 'auth/failure', to: "sessions#failure"
   resources :identities
 
   match '/article', to: 'static_pages#article'

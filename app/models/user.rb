@@ -1,10 +1,19 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+  include Mongoid::Paranoia
+  include Mongoid::Versioning
+
   field :provider, type: String
   field :uid, type: String
   field :name, type: String
   field :email, type: String
   field :image, type: String
+  
+  attr_accessible :name, :email, :image
+
+  validates :name, presence: true
+  validates :email, presence: true, uniqueness: true
 
   def self.from_omniauth(auth)
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
