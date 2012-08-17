@@ -19,6 +19,6 @@ class Authorization
   end
 
   def to_s
-  	"#{ provider } - #{ uid }"b
+  	"#{ provider } - #{ uid }"
   end
 end
