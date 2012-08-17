@@ -32,18 +32,7 @@ class SessionsController < ApplicationController
   end
 end
 
-# def create
-#   raise env['omniauth.auth'].to_yaml
-# end
 
 # def create
-#   auth_hash = request.env["omniauth.auth"]
-#   @authorization = Authorization.where(provider: auth_hash["provider"], uid: auth_hash["uid"]).first
-#   if @authorization 
-#     render text: "Welcome back #{@authorization.user.name}! You have already signed up."
-#   else
-#     user = User.create!(name: auth_hash["info"]["name"], email: auth_hash["info"]["email"])
-#     user.authorizations.create!(provider: auth_hash["provider"], uid: auth_hash["uid"])
-#     render text: "Hi #{ user.name }! You've signed up."
-#   end
+#   raise env['omniauth.auth'].to_yaml
 # end
