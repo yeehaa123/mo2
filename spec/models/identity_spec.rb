@@ -56,12 +56,22 @@ describe Identity do
 
   describe "when email address is already taken" do
 		before do
-			identity_with_same_email = Identity.new(name: "Another User", email: "user@example.com", 
+			identity_with_same_email = Identity.new(name: "Another User", email: "USER@EXAMPLE.COM", 
 														 									password: "foobar", password_confirmation: "foobar")
 			identity_with_same_email.save
 		end
 
 		it { should_not be_valid }
+	end
+	
+	describe "email address with mixed case" do
+		let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
+
+		it "should be save as all lower-case" do
+			@identity.email = mixed_case_email
+			@identity.save
+			@identity.reload.email.should == mixed_case_email.downcase
+		end
 	end
 
 	describe "when password is not present" do

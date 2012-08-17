@@ -11,9 +11,9 @@ class User
   field :image, type: String
   
   index({ email: 1 }, { unique: true, name: "index_users_on_email"})
-
-  validates :name, presence: true
-  validates :email, presence: true
+  
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   attr_accessible :name, :email, :image
 
