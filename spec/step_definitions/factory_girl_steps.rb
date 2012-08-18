@@ -17,8 +17,6 @@ FactoryGirl.factories.each do |factory|
 
     step "a(n) #{human_name} exists" do
       @user = FactoryGirl.create(:identity)
-      # @user.confirm!
-      @user.save!
     end
 
     step "there is another user" do

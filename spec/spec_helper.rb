@@ -73,8 +73,9 @@ RSpec.configure do |config|
   end
 end
 
-# YEEHAA email_spec
+
 RSpec.configure do |config|
+  # YEEHAA email_spec
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
 end

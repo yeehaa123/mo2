@@ -2,10 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
-    provider "Facebook"
-    uid "blablabla"
     name "Yeehaa"
     email "yeehaa@yeehaa.org"
-    image ""
   end
 end

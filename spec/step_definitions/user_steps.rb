@@ -11,11 +11,22 @@ end
 step "I am signed in as them" do
   step "I am on the homepage"
   step "I follow 'sign in'"
-  step "I fill in 'Email' with '#{@user.email}'"
-  step "I fill in 'Password' with '#{@user.password}'"
+  step "I fill in 'Email' with '#{ @user.email }'"
+  step "I fill in 'Password' with '#{ @user.password }'"
   step "I press 'Sign in'"
-  step "I should see 'Signed in successfully.'"
+  step "I should see 'Welcome #{ @user.name }' within 'div.flash'"
 end
+
+step "I should be signed in in successfully" do
+  # And I should see "user" within "title"
+  # And I could go to my profile page
+  # And I could go to my settings page
+  step "I should see 'Welcome' within 'div.flash'"
+  step "I should be able to sign out"
+  step "I should not see a link to the 'sign up' page"
+  step "I should not see a link to the 'sign in' page"
+end
+
 
 step "I visit my profile page" do
   visit user_path(@user)

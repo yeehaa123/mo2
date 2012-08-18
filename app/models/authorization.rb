@@ -1,11 +1,13 @@
 class Authorization
   include Mongoid::Document
-
+	
   field :provider, type: String
   field :uid, type: String
 
   belongs_to :user
-  validates :provider, :uid, presence: true
+  validates :user_id, :provider, :uid, presence: true
+	
+	attr_accessible :user, :provider, :uid
 
 	def self.find_or_create(auth_hash)
     unless auth = where(auth_hash.slice("provider", "uid")).first

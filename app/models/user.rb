@@ -12,7 +12,7 @@ class User
   
   index({ email: 1 }, { unique: true, name: "index_users_on_email"})
 
-  has_many :authorizations
+  has_many :authorizations, dependent: :delete
   
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, uniqueness: { case_sensitive: false }
@@ -29,6 +29,7 @@ class User
                            uid: auth_hash["uid"])
     end
   end
+
   # def self.from_omniauth(auth)
   #   where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   # end
