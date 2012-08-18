@@ -12,8 +12,7 @@ describe User do
 	# it { should respond_to(:uid) }
 	it { should respond_to(:name) }
 	it { should respond_to(:email) }
-	it { should respond_to(:image) }
-
+	
 	it { should be_valid }
 
 	describe "when name is not present" do

@@ -32,6 +32,10 @@ step "I visit my profile page" do
   visit user_path(@user)
 end
 
+step "I visit the sign up page" do
+  visit new_identity_path
+end
+
 step "I visit my settings page" do
   visit edit_user_registration_path
 end
@@ -46,6 +50,14 @@ end
 
 step "I could go to my settings page" do
   page.should have_link("settings", href: edit_user_registration_path(@user))
+end
+
+step "sign up should not create a user" do
+  expect { click_button "Sign up" }.not_to change(User, :count)
+end
+
+step "sign up should create a user" do
+  expect { click_button "Sign up" }.to change(User, :count)
 end
 
 # step "I am signed in as :email" do |email|

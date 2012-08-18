@@ -1,6 +1,6 @@
 - provide(:title, @user.name)
-%h1= 	@user.name
+%h1
+	=	gravatar_for @user
+	= @user.name
 - @user.authorizations.each do |auth|
 	%p= "#{ auth }"
-- if @user.image
-	= image_tag(@user.image, alt: @user.name)
