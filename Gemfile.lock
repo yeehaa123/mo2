@@ -153,6 +153,9 @@ GEM
       rack
     omniauth-facebook (1.4.1)
       omniauth-oauth2 (~> 1.1.0)
+    omniauth-google-oauth2 (0.1.13)
+      omniauth (~> 1.0)
+      omniauth-oauth2
     omniauth-identity (1.1.0)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
@@ -272,6 +275,7 @@ DEPENDENCIES
   mongoid (~> 3.0.0)
   mongoid-rspec
   omniauth-facebook
+  omniauth-google-oauth2
   omniauth-identity
   passenger
   rails (= 3.2.6)

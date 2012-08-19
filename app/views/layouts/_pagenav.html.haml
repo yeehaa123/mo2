@@ -11,5 +11,6 @@
 					%li= link_to('settings', '#')
 		- else
 			%li= link_to "Facebook Sign in", "/auth/facebook"
+			%li= link_to "Google Sign in", "/auth/google_oauth2"
 			%li= link_to "sign up", new_identity_path
 			%li= link_to "sign in", signin_path

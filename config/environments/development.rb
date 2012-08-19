@@ -38,4 +38,7 @@ Mo2::Application.configure do
 
   ENV['FACEBOOK_KEY'] = "298374053604013";
   ENV['FACEBOOK_SECRET'] = "17fc0288d2f5f0f5fc201ff8e60651d5";
+
+  ENV['GOOGLE_KEY'] = "917339117269.apps.googleusercontent.com";
+  ENV['GOOGLE_SECRET'] = "_87ZqiSy7xFkf0WMJkjmG9CR";
 end

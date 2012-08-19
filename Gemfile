@@ -12,8 +12,10 @@ gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
+gem 'omniauth-google-oauth2'
 
 # gem 'pdfkit'
 gem 'wicked_pdf'
