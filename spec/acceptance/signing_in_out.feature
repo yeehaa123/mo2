@@ -4,7 +4,7 @@ Feature: Signing in and out
 	I want to be able to sign in
 
 	Scenario: Signing in via form with valid information
-		Given a user exists
+		Given an identity exists
 		And I am on the homepage
 		When I follow "sign in"
 		And I fill in "Email" with "yeehaa@yeehaa.com"
@@ -18,11 +18,23 @@ Feature: Signing in and out
 	@omniauth
 	Scenario: Signing in via facebook
 		Given I am on the homepage 
-		And I am signed in with provider "facebook"
+		And I sign in with provider "facebook"
 		Then I should be signed in in successfully
 
 	@omniauth
-	Scenario: Signing in via facebook
+	Scenario: Signing in via google
+		Given I am on the homepage 
+		And I sign in with provider "google_oauth2"
+		Then I should be signed in in successfully
+
+	@omniauth
+	Scenario: Signing in via github
+		Given I am on the homepage 
+		And I sign in with provider "github"
+		Then I should be signed in in successfully
+
+	@omniauth
+	Scenario: Signing in via facebook (link)
 		Given I am on the homepage 
 		And I follow "Facebook Sign in"
 		Then I should be signed in in successfully
@@ -30,7 +42,7 @@ Feature: Signing in and out
 	@omniauth
 	Scenario: Signing in via identity
 		Given I am on the homepage 
-		And I am signed in with provider "identity"
+		And I sign in with provider "identity"
 		Then I should be signed in in successfully
 
 	Scenario: Signing in via form with invalid information
@@ -43,7 +55,7 @@ Feature: Signing in and out
 		And I should see "Authentication failed" within "div.flash"
 
 	Scenario: Signin out
-		Given a user exists
+		Given an identity exists
 		And I am signed in as them
 		And I follow "sign out"
 		Then I should see a link to the "sign in" page

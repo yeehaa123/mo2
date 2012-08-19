@@ -1,6 +1,9 @@
-- provide(:title, @user.name)
+- provide(:title, @user.user_name)
 %h1
 	=	gravatar_for @user
-	= @user.name
+	= @user.user_name
+%p= @user.first_name
+%p= @user.last_name
+%p= @user.email
 - @user.authorizations.each do |auth|
 	%p= "#{ auth }"

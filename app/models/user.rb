@@ -4,7 +4,9 @@ class User
   include Mongoid::Paranoia
   include Mongoid::Versioning
 
-  field :name, type: String
+  field :user_name, type: String
+  field :first_name, type: String
+  field :last_name, type: String
   field :email, type: String
   field :remember_token, type: String
 
@@ -13,10 +15,13 @@ class User
 
   has_many :authorizations, dependent: :delete
   
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :user_name, presence: true, length: { maximum: 50 }
 
-  attr_accessible :name, :email, :image
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
+      uniqueness: { case_sensitive: false }
+
+  attr_accessible :user_name, :email, :image, :first_name, :last_name
 
   before_save { self.email.downcase! }
   before_save { self.remember_token = SecureRandom.urlsafe_base64 }

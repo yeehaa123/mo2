@@ -16,6 +16,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'omniauth-facebook'
 gem 'omniauth-identity'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 
 # gem 'pdfkit'
 gem 'wicked_pdf'

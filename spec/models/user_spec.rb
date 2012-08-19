@@ -3,12 +3,12 @@ require 'spec_helper'
 describe User do
 
 	before do 
-		@user = User.new(name: "Example User", email: "user@example.com")
+		@user = User.new(user_name: "Example User", email: "user@example.com")
 	end
 
 	subject { @user }
 	
-	it { should respond_to(:name) }
+	it { should respond_to(:user_name) }
 	it { should respond_to(:email) }
 	it { should respond_to(:remember_token)}
 
@@ -16,12 +16,12 @@ describe User do
 	it { should be_valid }
 
 	describe "when name is not present" do
-		before { @user.name = " " }
+		before { @user.user_name = " " }
 		it { should_not be_valid}
 	end
 
 	describe "when name is too long" do
-		before { @user.name = "a" * 51 }
+		before { @user.user_name = "a" * 51 }
 		it { should_not be_valid}
 	end
 	
@@ -32,7 +32,7 @@ describe User do
 
 	describe "when email address is already taken" do
 		before do
-			user_with_same_email = User.new(name: "Another User", email: "USER@EXAMPLE.COM", 
+			user_with_same_email = User.new(user_name: "Another User", email: "USER@EXAMPLE.COM", 
 														 									password: "foobar", password_confirmation: "foobar")
 			user_with_same_email.save
 		end

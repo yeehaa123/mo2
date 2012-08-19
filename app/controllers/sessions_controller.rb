@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       # Create the session
       sign_in(auth.user)
 
-      redirect_to origin, notice: "Welcome #{ auth.user.name }"
+      redirect_to origin, notice: "Welcome #{ auth.user.user_name }"
     end
   end
 
@@ -32,8 +32,3 @@ class SessionsController < ApplicationController
     redirect_to signin_path, alert: "Authentication failed, please try again."
   end
 end
-
-
-# def create
-#   raise env['omniauth.auth'].to_yaml
-# end

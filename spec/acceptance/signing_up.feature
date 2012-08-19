@@ -16,7 +16,7 @@ I want to be able to sign up
 	@omniauth
 	Scenario: Signing up with Identity after Signing in with Facebook 
 		Given I am on the homepage
-		And I am signed in with provider facebook
+		And I sign in with provider facebook
 		And I visit the sign up page
 		When I fill in "Name" with "Dada"
 		And I fill in "Email" with "BlaBla@BlaBlaBla.com"
@@ -28,8 +28,8 @@ I want to be able to sign up
 	@omniauth
 	Scenario: Signing up with Identity after Signing in with Facebook 
 		Given I am on the homepage
-		And I am signed in with provider identity
-		And I am signed in with provider facebook
+		And I sign in with provider identity
+		And I sign in with provider facebook
 		Then I should see "You can now login using Facebook too!" within "div.flash"
 
 	Scenario: Signing up with invalid information

@@ -11,22 +11,20 @@ end
 step "I am signed in as them" do
   step "I am on the homepage"
   step "I follow 'sign in'"
-  step "I fill in 'Email' with '#{ @user.email }'"
-  step "I fill in 'Password' with '#{ @user.password }'"
+  step "I fill in 'Email' with '#{ @identity.email }'"
+  step "I fill in 'Password' with '#{ @identity.password }'"
   step "I press 'Sign in'"
-  step "I should see 'Welcome #{ @user.name }' within 'div.flash'"
+  step "I should see 'Welcome #{ @identity.name }' within 'div.flash'"
 end
 
 step "I should be signed in in successfully" do
-  # And I should see "user" within "title"
-  # And I could go to my profile page
-  # And I could go to my settings page
   step "I should see 'Welcome' within 'div.flash'"
-  step "I should be able to sign out"
+  step "I should be able to sign out"  
+  step "I should see a link to the 'profile' page"
+  step "I should see a link to the 'settings' page"
   step "I should not see a link to the 'sign up' page"
   step "I should not see a link to the 'sign in' page"
 end
-
 
 step "I visit my profile page" do
   visit user_path(@user)
@@ -37,19 +35,19 @@ step "I visit the sign up page" do
 end
 
 step "I visit my settings page" do
-  visit edit_user_registration_path
+  visit edit_user_path(@user)
 end
 
 step "I visit the settings page of this other user" do
   visit edit_user_registration_path(@user2)
 end
 
-step "I could go to my profile page" do
+step "I should be able to visit my profile page" do
   page.should have_link("profile", href: user_path(@user))
 end
 
-step "I could go to my settings page" do
-  page.should have_link("settings", href: edit_user_registration_path(@user))
+step "I should be able to visit my settings page" do
+  page.should have_link("settings", href: edit_user_path(@user))
 end
 
 step "sign up should not create a user" do
@@ -66,7 +64,7 @@ end
 # end
 
 step "I should see my/his :name within :selector" do |name, selector|
-  page.should have_selector selector, text: @user_name
+  page.should have_selector selector, text: @identity.name
 end
 
 step "I should be able to sign out" do

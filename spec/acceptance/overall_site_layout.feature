@@ -34,18 +34,18 @@ Feature: Overall Site Layout
 		And I should see "Medial Operations // Sign in" within "title"
 
 	Scenario: Visiting a User's Profile page
-		Given a user exists
+		Given an identity exists
 		And I am signed in as them
 		And I am on the homepage
 		And I follow 'profile'
 		Then I should see my name within "h1"
 		And I should see my name within "title"
 
-	# Scenario: Visting a User's Edit page
-	# 	Given a user exists
-	# 	And I am signed in as them
-	# 	And I am on the homepage
-	# 	And I follow 'settings'
-	# 	Then I should see 'Update your profile' within "h1"
-	# 	And I should see 'Edit User' within "title"
-	# 	And I should see a link 'change' to "http://gravatar.com/emails"
+	Scenario: Visting a User's Edit page
+		Given an identity exists
+		And I am signed in as them
+		And I am on the homepage
+		And I follow 'settings'
+		Then I should see 'Update your profile' within "h1"
+		And I should see 'Edit user' within "title"
+		And I should see a link 'change' to "http://gravatar.com/emails"

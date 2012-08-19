@@ -41,4 +41,7 @@ Mo2::Application.configure do
 
   ENV['GOOGLE_KEY'] = "917339117269.apps.googleusercontent.com";
   ENV['GOOGLE_SECRET'] = "_87ZqiSy7xFkf0WMJkjmG9CR";
+
+  ENV['GITHUB_KEY'] = "506bb5b1135b7997ab56";
+  ENV['GITHUB_SECRET'] = "dee4bbe236df4b4b666862100c5adb47d3a02618";
 end

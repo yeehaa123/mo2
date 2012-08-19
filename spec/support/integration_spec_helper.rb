@@ -1,5 +1,5 @@
 module OmniAuthSteps
-	step "I am signed in with provider :prov_name" do |prov_name|
+	step "I sign in with provider :prov_name" do |prov_name|
 	  OmniAuth.config.test_mode = true
 	  OmniAuth.config.add_mock(prov_name, {
 	  :uid => '12345',
@@ -10,6 +10,7 @@ module OmniAuthSteps
 	    }
 	  })
 	  visit "/auth/#{prov_name.downcase}"
+	  @user = User.last
 	  OmniAuth.config.test_mode = false
 	end
 
@@ -23,11 +24,22 @@ module OmniAuthSteps
 	    image: ""
 	    }
 	  })
-		click_link(link)	  
+		click_link(link) 
+		@user = User.last
 		OmniAuth.config.test_mode = false
+	end
+
+	step "I should be signed in in successfully" do
+	  step "I should see 'Welcome' within 'div.flash'"
+	  step "I should be able to sign out"
+	  step "I should be able to visit my profile page"
+	  step "I should be able to visit my settings page"
+	  step "I should not see a link to the 'sign up' page"
+	  step "I should not see a link to the 'sign in' page"
 	end
 end
 	
+
 
 RSpec.configure do |config|
   config.include OmniAuthSteps, :omniauth => true
