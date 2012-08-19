@@ -17,15 +17,15 @@ class SessionsController < ApplicationController
       auth = Authorization.find_or_create(auth_hash)
 
       # Create the session
-      cookies[:remember_token] = auth.user.remember_token
+      sign_in(auth.user)
 
       redirect_to origin, notice: "Welcome #{ auth.user.name }"
     end
   end
 
   def destroy
-    cookies[:remember_token] = nil
-    redirect_to root_url, notice: "Signed out!"
+    sign_out
+    redirect_to root_path, notice: "Signed out!"
   end
 
   def failure
