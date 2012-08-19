@@ -1,7 +1,7 @@
 .pagenav
 	%nav
 		%li= link_to "article", article_path
-		- if current_user
+		- if signed_in?
 			/ %li= link_to(current_user.name, user_path(current_user))
 			%li= link_to('sign out', signout_path, method:'delete')
 			%li

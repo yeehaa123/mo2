@@ -7,6 +7,8 @@ class Authorization
   belongs_to :user
   validates :user_id, :provider, :uid, presence: true
 	
+  index({ user_id: 1 })
+
 	attr_accessible :user, :provider, :uid
 
 	def self.find_or_create(auth_hash)

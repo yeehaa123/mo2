@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
   def create
     # raise env['omniauth.auth'].to_yaml
     auth_hash = request.env['omniauth.auth']
+    origin    = request.env['omniauth.origin'] || root_path
 
-    if session[:user_id]
+    if signed_in?
       # Means our user is signed in. Add the authorization to the user
-      User.find(session[:user_id]).add_provider(auth_hash)
+      current_user.add_provider(auth_hash)
 
       redirect_to root_url, notice: "You can now login using #{ auth_hash["provider"].capitalize } too!"
     else
@@ -16,14 +17,14 @@ class SessionsController < ApplicationController
       auth = Authorization.find_or_create(auth_hash)
 
       # Create the session
-      session[:user_id] = auth.user.id
+      cookies[:remember_token] = auth.user.remember_token
 
-      redirect_to root_url, notice: "Welcome #{ auth.user.name }"
+      redirect_to origin, notice: "Welcome #{ auth.user.name }"
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies[:remember_token] = nil
     redirect_to root_url, notice: "Signed out!"
   end
 

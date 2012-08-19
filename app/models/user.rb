@@ -4,12 +4,12 @@ class User
   include Mongoid::Paranoia
   include Mongoid::Versioning
 
-  # field :provider, type: String
-  # field :uid, type: String
   field :name, type: String
   field :email, type: String
-  
+  field :remember_token, type: String
+
   index({ email: 1 }, { unique: true, name: "index_users_on_email"})
+  index({ remember_token: 1 })
 
   has_many :authorizations, dependent: :delete
   
@@ -19,6 +19,7 @@ class User
   attr_accessible :name, :email, :image
 
   before_save { self.email.downcase! }
+  before_save { self.remember_token = SecureRandom.urlsafe_base64 }
 
   def add_provider(auth_hash)
     # Check if the provider already exists, so we don't add it twice
