@@ -19,6 +19,10 @@ FactoryGirl.factories.each do |factory|
       @identity = FactoryGirl.create(:identity)
     end
 
+    step "a(n) user exists" do
+      @user = FactoryGirl.create(:user)
+    end
+
     # step "I am a signed in user" do
     #   @user = FactoryGirl.create(:user)
     #   cookies[:remember_token] = @user.remember_token
@@ -26,9 +30,7 @@ FactoryGirl.factories.each do |factory|
     # end
 
     step "there is another user" do
-      @user2 = FactoryGirl.create(:user, name: "wrong", email: "wrong@example.org")
-      # @user2.confirm!
-      @user2.save!
+      @user2 = FactoryGirl.create(:user, user_name: "wrong", email: "wrong@example.org")
     end
 
     step "I am a user" do

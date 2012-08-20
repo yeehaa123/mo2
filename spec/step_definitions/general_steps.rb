@@ -58,11 +58,26 @@ step "I should see a flash :flash_kind" do |flash_kind|
 	page.should have_selector("div.flash_#{ flash_kind }")
 end
 
-step "I submit to the users path" do
-	put edit_user_registration_path(@user)
-end
-
 step "I should get a :response_number response" do |response_number|
 	assert [response_number.to_i].include?(@integration_session.status), 
 		"Expected status to be #{ response_number }, got #{ @integration_session.status }"
+end
+
+# step "I am redirected to( the) :url" do |url|
+#   assert [301, 302].include?(@integration_session.status), "Expected status to be 301 or 302, got #{@integration_session.status}"
+#   location = @integration_session.headers["Location"]
+#   assert_equal url, location
+#   visit location
+# end
+
+step "I am redirected to( the) signin path" do
+	response.should redirect_to(signin_path)
+end
+
+step "I am redirected to( the) root path" do
+	response.should redirect_to(root_path)
+end
+
+step "I am redirected to( the) user path" do
+	response.should redirect_to(user_path)
 end

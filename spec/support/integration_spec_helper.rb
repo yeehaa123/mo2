@@ -11,7 +11,7 @@ module OmniAuthSteps
 	  })
 	  visit "/auth/#{prov_name.downcase}"
 	  @user = User.last
-	  OmniAuth.config.test_mode = false
+		OmniAuth.config.test_mode = false
 	end
 
 	step "I follow :link" do |link|

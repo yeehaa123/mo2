@@ -38,8 +38,22 @@ step "I visit my settings page" do
   visit edit_user_path(@user)
 end
 
-step "I visit the settings page of this other user" do
-  visit edit_user_registration_path(@user2)
+step "I visit his/her settings page" do
+  visit edit_user_path(@user2)
+end
+
+step "I illegally submit to the users path" do
+  put user_path(@user)
+end
+
+step "I legally submit to the users path" do
+  cookies[:remember_token] = @user.remember_token
+  put user_path(@user)
+end
+
+step "I illegally submit to the other users path" do
+  cookies[:remember_token] = @user.remember_token
+  put user_path(@user2)
 end
 
 step "I should be able to visit my profile page" do
@@ -70,4 +84,12 @@ end
 step "I should be able to sign out" do
   # page.should have_link("sign out", href: signout_path)
   page.should have_link("sign out", href: signout_path, method: :delete)
+end
+
+step "my user_name should be updated in the database to :new_value" do |new_value|
+  @user.reload.user_name.should == new_value
+end
+
+step "my email should be updated in the database to :new_value" do |new_value|
+  @user.reload.email.should == new_value
 end
