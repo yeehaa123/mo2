@@ -81,3 +81,7 @@ end
 step "I am redirected to( the) user path" do
 	response.should redirect_to(user_path)
 end
+
+step "the page should have a :selector" do |selector|
+	page.should have_selector(selector)
+end

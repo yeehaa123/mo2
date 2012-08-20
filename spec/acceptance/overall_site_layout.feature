@@ -50,11 +50,14 @@ Feature: Overall Site Layout
 		And I should see 'Edit user' within "title"
 		And I should see a link 'change' to "http://gravatar.com/emails"
 
-	Scenario: Visting the user index
+	Scenario: Visting the user index with pagination
 		Given an identity exists
 		And I am signed in as them
+		And 30 users exist
 		And I am on the homepage
 		And I follow 'users'
+		Then show me the page
 		Then I should see 'All users' within "h1"
 		And I should see 'All users' within "title"
+		And the page should have a '.pagination'
 		And it should list each user

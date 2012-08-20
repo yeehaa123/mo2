@@ -103,7 +103,7 @@ step "my email should be updated in the database to :new_value" do |new_value|
 end
 
 step "it should list each user" do
-  User.all.each do |user|
+  User.all.page(1).each do |user|
     page.should have_selector('li', text: user.user_name)
   end
 end

@@ -5,6 +5,8 @@ gem 'rails', '3.2.6'
 gem 'jquery-rails'
 gem 'haml', "~> 3.1.6"
 gem 'haml-rails', "~> 0.3.4"
+gem 'faker'
+gem 'kaminari'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
