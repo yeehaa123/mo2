@@ -49,3 +49,12 @@ Feature: Overall Site Layout
 		Then I should see 'Update your profile' within "h1"
 		And I should see 'Edit user' within "title"
 		And I should see a link 'change' to "http://gravatar.com/emails"
+
+	Scenario: Visting the user index
+		Given an identity exists
+		And I am signed in as them
+		And I am on the homepage
+		And I follow 'users'
+		Then I should see 'All users' within "h1"
+		And I should see 'All users' within "title"
+		And it should list each user

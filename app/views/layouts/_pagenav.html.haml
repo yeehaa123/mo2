@@ -5,7 +5,7 @@
 			/ %li= link_to(current_user.name, user_path(current_user))
 			%li= link_to('sign out', signout_path, method:'delete')
 			%li
-				= link_to "users", '#'
+				= link_to "users", users_path
 				%ul.dropdown
 					%li= link_to('profile', user_path(current_user))
 					%li= link_to('settings', edit_user_path(current_user))

@@ -34,6 +34,7 @@ module OmniAuthSteps
 	  step "I should be able to sign out"
 	  step "I should be able to visit my profile page"
 	  step "I should be able to visit my settings page"
+	  step "I should be able to visit the user index"
 	  step "I should not see a link to the 'sign up' page"
 	  step "I should not see a link to the 'sign in' page"
 	end

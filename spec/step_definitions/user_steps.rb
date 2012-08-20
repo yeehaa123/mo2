@@ -30,6 +30,10 @@ step "I visit my profile page" do
   visit user_path(@user)
 end
 
+step "I visit the user index" do
+  visit users_path
+end
+
 step "I visit the sign up page" do
   visit new_identity_path
 end
@@ -64,6 +68,10 @@ step "I should be able to visit my settings page" do
   page.should have_link("settings", href: edit_user_path(@user))
 end
 
+step "I should be able to visit the user index" do
+  page.should have_link("users", href: users_path)
+end
+
 step "sign up should not create a user" do
   expect { click_button "Sign up" }.not_to change(User, :count)
 end
@@ -92,4 +100,10 @@ end
 
 step "my email should be updated in the database to :new_value" do |new_value|
   @user.reload.email.should == new_value
+end
+
+step "it should list each user" do
+  User.all.each do |user|
+    page.should have_selector('li', text: user.user_name)
+  end
 end

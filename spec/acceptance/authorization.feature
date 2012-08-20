@@ -7,6 +7,11 @@ Feature: User Authorization
 		Given I am a user
 		And I visit my settings page
 		Then I should see 'Sign in' within 'title'
+
+	Scenario: Accessing user index by non-signed-in users
+		Given I am a user
+		And I visit the user index
+		Then I should see 'Sign in' within 'title'
 	
 	Scenario: Submitting to the user's path by non-signed-in users
 		Given I am a user
@@ -39,3 +44,10 @@ Feature: User Authorization
 		And there is another user
 		When I legally submit to the users path
 		Then I am redirected to the user path
+	
+	@omniauth
+	Scenario: Friendly forwarding
+		Given I am on the homepage
+		And I follow 'article'
+		And I sign in with provider identity
+		Then I should see 'Article' within 'title'
