@@ -14,6 +14,13 @@
 
 	= f.label :email
 	= f.text_field :email
+	
+	- if can? :assign_roles, @user
+		- for role in User::ROLES
+			= check_box_tag "user[roles][#{role}]", role, @user.roles.include?(role), { name:"user[roles][]" }
+			= label_tag "user_roles_#{role}", role.humanize
+			%br
+			= hidden_field_tag "user[roles][]", ""
 
 	= f.submit "Save changes", class: "btn"
 

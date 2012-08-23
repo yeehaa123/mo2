@@ -13,6 +13,8 @@ gem 'kaminari'
 gem "mongoid", "~> 3.0.0"
 gem 'bson_ext'
 
+gem 'cancan'
+
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'omniauth-facebook'
@@ -20,16 +22,13 @@ gem 'omniauth-identity'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 
-# gem 'pdfkit'
 gem 'wicked_pdf'
-# gem 'maruku'
 gem 'kramdown'
 gem 'haml-kramdown'
 
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '0.5.5'
-  # gem 'guard-cucumber'
   gem 'mongoid-rspec'
   gem 'factory_girl_rails'
 end
@@ -65,9 +64,6 @@ group :production do
   gem "wkhtmltopdf-heroku", :git => 'git://github.com/camdez/wkhtmltopdf-heroku.git'
   gem 'thin'
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

@@ -11,7 +11,8 @@ describe User do
 	it { should respond_to(:user_name) }
 	it { should respond_to(:email) }
 	it { should respond_to(:remember_token)}
-
+	it { should respond_to(:roles) }
+	it { should respond_to(:is?) }
 
 	it { should be_valid }
 
@@ -53,5 +54,11 @@ describe User do
 	describe "remember token" do
 		before { @user.save }
 		its(:remember_token) { should_not be_blank }	
+	end
+
+	describe "with admin attribute set to true" do
+		before { @user.roles = ['admin'] }
+
+		it { @user.is?("admin").should be_true }
 	end
 end

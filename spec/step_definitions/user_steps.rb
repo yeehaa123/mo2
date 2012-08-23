@@ -46,19 +46,19 @@ step "I visit his/her settings page" do
   visit edit_user_path(@user2)
 end
 
-step "I illegally submit to the users path" do
-  put user_path(@user)
-end
+# step "I illegally submit to the users path" do
+#   put user_path(@user)
+# end
 
-step "I legally submit to the users path" do
-  cookies[:remember_token] = @user.remember_token
-  put user_path(@user)
-end
+# step "I legally submit to the users path" do
+#   cookies[:remember_token] = @user.remember_token
+#   put user_path(@user)
+# end
 
-step "I illegally submit to the other users path" do
-  cookies[:remember_token] = @user.remember_token
-  put user_path(@user2)
-end
+# step "I illegally submit to the other users path" do
+#   cookies[:remember_token] = @user.remember_token
+#   put user_path(@user2)
+# end
 
 step "I should be able to visit my profile page" do
   page.should have_link("profile", href: user_path(@user))

@@ -9,6 +9,7 @@ class User
   field :last_name, type: String
   field :email, type: String
   field :remember_token, type: String
+  field :roles_mask, type: Integer
 
   index({ email: 1 }, { unique: true, name: "index_users_on_email"})
   index({ remember_token: 1 })
@@ -21,10 +22,12 @@ class User
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
       uniqueness: { case_sensitive: false }
 
-  attr_accessible :user_name, :email, :image, :first_name, :last_name
-
+  attr_accessible :user_name, :email, :image, :first_name, :last_name, :roles
+  
   before_save { self.email.downcase! }
   before_save { self.remember_token = SecureRandom.urlsafe_base64 }
+
+  ROLES = %w[admin]
 
   def add_provider(auth_hash)
     # Check if the provider already exists, so we don't add it twice
@@ -34,6 +37,21 @@ class User
                             uid: auth_hash["uid"])
     end
   end
+
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  def is?(role)
+    roles.include?(role.to_s)
+  end
+end
 
   # def self.from_omniauth(auth)
   #   where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
@@ -48,4 +66,3 @@ class User
   #     user.image = auth["info"]["image"] 
   #   end
   # end
-end

@@ -23,6 +23,10 @@ FactoryGirl.factories.each do |factory|
       @user = FactoryGirl.create(:user)
     end
 
+    step "a(n) admin exists" do
+      @user = FactoryGirl.create(:admin)
+    end
+
     # step "I am a signed in user" do
     #   @user = FactoryGirl.create(:user)
     #   cookies[:remember_token] = @user.remember_token

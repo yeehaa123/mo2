@@ -12,11 +12,6 @@ Feature: User Authorization
 		Given I am a user
 		And I visit the user index
 		Then I should see 'Sign in' within 'title'
-	
-	Scenario: Submitting to the user's path by non-signed-in users
-		Given I am a user
-		When I illegally submit to the users path
-		Then I am redirected to the signin path
 
 	Scenario: Accessing another user's setting page
 		Given an identity exists
@@ -32,18 +27,6 @@ Feature: User Authorization
 		When I visit his settings page
 		Then I should not see 'Edit user' within 'title'
 		And I should see "Welcome to Medial Operations"
-
-	Scenario: Submitting to another user's path by signed-in users
-		Given a user exists
-		And there is another user
-		When I illegally submit to the other users path
-		Then I am redirected to the root path
-
-	Scenario: Submitting to user's path by signed-in user
-		Given a user exists
-		And there is another user
-		When I legally submit to the users path
-		Then I am redirected to the user path
 	
 	@omniauth
 	Scenario: Friendly forwarding
