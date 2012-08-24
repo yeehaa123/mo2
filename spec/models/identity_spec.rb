@@ -18,51 +18,30 @@ describe Identity do
 
 	it { should be_valid }
 
-	describe "when name is not present" do
-		before { @identity.name = " " }
-		it { should_not be_valid}
-	end
+	it { should validate_presence_of(:name) }
+	it { should ensure_length_of(:name).is_at_most(50) }
 
-	describe "when name is too long" do
-		before { @identity.name = "a" * 51 }
-		it { should_not be_valid}
-	end
-	
-	describe "when email is not present" do
-		before { @identity.email = " " }
-		it { should_not be_valid}
-	end
+	it { should validate_presence_of(:email) }
+	it { should validate_uniqueness_of(:email) }
 
-	describe "when email format is invalid" do
-    it "should be invalid" do
+  context "when email format is invalid" do
+    describe "should be invalid" do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
-      	@identity.email = invalid_address
-        @identity.should_not be_valid
+				it { should_not allow_value(invalid_address).for(:email) }
       end      
     end
   end
-
-  describe "when email format is valid" do
-    it "should be valid" do
+	
+  context "when email format is valid" do
+    describe "should be valid" do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
-        @identity.email = valid_address
-        @identity.should be_valid
+				it { should allow_value(valid_address).for(:email) }
       end      
     end
   end
-
-  describe "when email address is already taken" do
-		before do
-			identity_with_same_email = Identity.new(name: "Another User", email: "USER@EXAMPLE.COM", 
-														 									password: "foobar", password_confirmation: "foobar")
-			identity_with_same_email.save
-		end
-
-		it { should_not be_valid }
-	end
 	
 	describe "email address with mixed case" do
 		let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
@@ -74,25 +53,10 @@ describe Identity do
 		end
 	end
 
-	describe "when password is not present" do
-		before { @identity.password = @identity.password_confirmation = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when password does not match confirmation" do
-		before { @identity.password_confirmation = "mismatch" }
-		it { should_not be_valid }
-	end
-
-	describe "when password confirmation is nil" do
-		before { @identity.password_confirmation = nil }
-		it { should_not be_valid }
-	end
-
-	describe "with a password that is too short" do
-		before { @identity.password = @identity.password_confirmation = "a" * 5 }
-		it { should_not be_valid }
-	end
+	it { should validate_presence_of(:password) }
+	it { should ensure_length_of(:password).is_at_least(6) }
+	it { should validate_confirmation_of(:password) }
+	it { should_not allow_value(nil).for(:password_confirmation) }
 
 	describe "return value of authenticate method" do
 		before { @identity.save }

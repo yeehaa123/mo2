@@ -16,30 +16,11 @@ describe User do
 
 	it { should be_valid }
 
-	describe "when name is not present" do
-		before { @user.user_name = " " }
-		it { should_not be_valid}
-	end
-
-	describe "when name is too long" do
-		before { @user.user_name = "a" * 51 }
-		it { should_not be_valid}
-	end
+	it { should validate_presence_of(:user_name) }
+	it { should ensure_length_of(:user_name).is_at_most(50)}
 	
-	describe "when email is not present" do
-		before { @user.email = " " }
-		it { should_not be_valid}
-	end
-
-	describe "when email address is already taken" do
-		before do
-			user_with_same_email = User.new(user_name: "Another User", email: "USER@EXAMPLE.COM", 
-														 									password: "foobar", password_confirmation: "foobar")
-			user_with_same_email.save
-		end
-
-		it { should_not be_valid }
-	end
+	it { should validate_presence_of(:email) }
+	it { should validate_uniqueness_of(:email) }
 	
 	describe "email address with mixed case" do
 		let(:mixed_case_email) { "Foo@ExAMPle.CoM" }

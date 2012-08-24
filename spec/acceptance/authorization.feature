@@ -14,21 +14,12 @@ Feature: User Authorization
 		Then I should see 'Sign in' within 'title'
 
 	Scenario: Accessing another user's setting page
-		Given an identity exists
-		And I am signed in as them
-		And there is another user
-		When I visit her settings page
-		Then I should not see 'Edit user' within 'title'
-	
-	@omniauth
-	Scenario: Accessing another user's setting page (Omniauth)
 		Given I sign in with provider identity
 		And there is another user
 		When I visit his settings page
 		Then I should not see 'Edit user' within 'title'
 		And I should see "Welcome to Medial Operations"
 	
-	@omniauth
 	Scenario: Friendly forwarding
 		Given I am on the homepage
 		And I follow 'article'

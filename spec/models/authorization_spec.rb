@@ -18,20 +18,9 @@ describe Identity do
 
 	it { should be_valid }
 
-	describe "when user is not present" do
-		before { @auth.user_id = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when provider is not present" do
-		before { @auth.provider = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when uid is not present" do
-		before { @auth.uid = " " }
-		it { should_not be_valid }
-	end
+	it { should validate_presence_of(:user_id) }
+	it { should validate_presence_of(:provider) }
+	it { should validate_presence_of(:uid) }
 
 	describe "should output to string" do
 		it { "#{ @auth }".should == "#{ @auth.provider } - #{ @auth.uid }" }
