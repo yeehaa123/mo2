@@ -13,7 +13,6 @@ I want to be able to sign up
 		Then sign up should create a user
 		And I should see "Welcome Dada"
 	
-	@omniauth
 	Scenario: Signing up with Identity after Signing in with Facebook 
 		Given I am on the homepage
 		And I sign in with provider facebook
@@ -25,7 +24,6 @@ I want to be able to sign up
 		Then sign up should not create a user
 		And I should see "You can now login using Identity too!" within "div.flash"
 
-	@omniauth
 	Scenario: Signing up with Identity after Signing in with Facebook 
 		Given I am on the homepage
 		And I sign in with provider identity

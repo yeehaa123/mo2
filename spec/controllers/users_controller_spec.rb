@@ -4,28 +4,47 @@ describe UsersController do
 	let(:user) 				{ FactoryGirl.create(:user) }
 	let(:admin) 			{ FactoryGirl.create(:admin) }
 
+
   context "for non-signed-in users" do
 
     describe "making a show request" do
-    	before { get :show, id: user } 	
-      specify { response.should be_success }
+
+    	before 	{ get :show, id: user } 	
+
+      it 			{ should respond_with(:success) }
+      it 			{ should render_template(:show) }
+      it 			{ should_not set_the_flash }
     end
 
 		describe "making a index request" do
-			before { get :index } 	
-			specify { response.should redirect_to(signin_path) }
+			before 	{ get :index } 	
+
+			it 			{ should redirect_to(signin_path) }
+			it 			{ should set_the_flash.now.to("Please sign in.") }
 		end
 
 		describe "making a edit request" do
-			before { get :edit, id: user } 	
-			specify { response.should redirect_to(signin_path) }
+			before 	{ get :edit, id: user }
+
+			it 			{ should redirect_to(signin_path) }
+			it 			{ should set_the_flash.now.to("Please sign in.") }
 		end
 
 		describe "submitting to the update action" do
-			before { put :update, id: user } 	
-			specify { response.should redirect_to(signin_path) }
+			before 	{ put :update, id: user } 	
+
+			it 			{ should redirect_to(signin_path) }
+			it 			{ should set_the_flash.now.to("Please sign in.") }
+		end
+
+		describe "submitting to the update action" do
+			before 	{ delete :destroy, id: user } 	
+
+			it 			{ should redirect_to(root_path) }
+			it 			{ should set_the_flash.now.to("Access denied!") }
 		end
 	end
+
 
 	context "for signed-in users" do
 
@@ -34,30 +53,51 @@ describe UsersController do
 		end
 
     describe "making a show request" do
-    	before { get :show, id: user } 	
-      specify { response.should be_success }
+    	before 	{ get :show, id: user } 	
+
+	    it 			{ should respond_with(:success) }
+	    it 			{ should render_template(:show) }
+	    it 			{ should_not set_the_flash }	
     end
 
 		describe "making a index request" do
-			before { get :index } 	
-			specify { response.should be_success }
+			before 	{ get :index }
+
+	    it 			{ should respond_with(:success) }
+	    it 			{ should render_template(:index) }
+	    it 			{ should_not set_the_flash }	
 		end
 
 		describe "making a edit request" do
-			before { get :edit, id: user } 	
-			specify { response.should be_success }
+			before 	{ get :edit, id: user } 	
+
+	    it 			{ should respond_with(:success) }
+	    it 			{ should render_template(:edit) }
+	    it 			{ should_not set_the_flash }	
 		end
 
 		describe "submitting to the update action" do
-			before { put :update, id: user, user: {} } 
-			specify { response.should redirect_to(user_path) }
+			before 	{ put :update, id: user, user: {} } 
+
+			it 			{ should redirect_to(user_path) }
+			it 			{ should set_the_flash.now.to("Profile updated") }
+		end
+
+		describe "submitting to the destroy action" do
+			before 	{ delete :destroy, id: user } 	
+
+			it 			{ should redirect_to(root_path) }
+			it 			{ should set_the_flash.now.to("Access denied!") }
 		end
 
 		describe "submitting to the update action of another user" do
-			before { put :update, id: admin } 
-			specify { response.should redirect_to(root_path) }
+			before 	{ put :update, id: admin } 
+
+			it 			{ should redirect_to(root_path) }
+			it 			{ should set_the_flash.now.to("Access denied!") }
 		end
 	end
+
 
 	context "for admin users" do
 		
@@ -70,33 +110,66 @@ describe UsersController do
 		end
 
     describe "making a show request" do
-    	before { get :show, id: user } 	
-      specify { response.should be_success }
+    	before 	{ get :show, id: user }
+
+	    it 			{ should respond_with(:success) }
+	    it 			{ should render_template(:show) }
+	    it 			{ should_not set_the_flash }
     end
 
 		describe "making a index request" do
-			before { get :index } 	
-			specify { response.should be_success }
+			before 	{ get :index }
+
+  	  it 			{ should respond_with(:success) }
+  	  it 			{ should render_template(:index) }
+	    it 			{ should_not set_the_flash }
 		end
 		
 		describe "making a edit request" do
-			before { get :edit, id: admin } 	
-			specify { response.should be_success }
-		end
+			before 	{ get :edit, id: admin }
 
-		describe "submitting to the update action" do
-			before { put :update, id: admin, user: { roles: [] } }
-			specify { response.should redirect_to(user_path) }
+	    it 			{ should respond_with(:success) }
+	    it 			{ should render_template(:edit) }
+	    it 			{ should_not set_the_flash }
 		end
 
 		describe "making a edit another user request" do
-			before { get :edit, id: user } 	
-			specify { response.should be_success }
+			before 	{ get :edit, id: user } 	
+
+	    it 			{ should respond_with(:success) }
+	    it 			{ should render_template(:edit) }
+	    it 			{ should_not set_the_flash }
+		end
+
+		describe "submitting to the update action" do
+			before 	{ put :update, id: admin, user: { roles: [] } }
+
+			it 			{ should redirect_to(user_path) }
+			it 			{ should set_the_flash.now.to("Profile updated") }
+		end
+		
+		describe "submitting to the destroy action" do
+			before 	{ delete :destroy, id: admin } 	
+
+			it 			{ should redirect_to(root_path) }
+			it 			{ should set_the_flash.now.to("Access denied!") }
 		end
 
 		describe "submitting to the update action of another user" do
-			before { put :update, id: user, user: { roles: [] } }
-			specify { response.should redirect_to(user_path) }
+			before 	{ put :update, id: user, user: { roles: ["admin"] } }
+
+			it 			{ should redirect_to(user_path) }
+			it 			{ should set_the_flash.now.to("Profile updated") }
+		end
+
+		describe "submitting to the destroy action of another user" do
+
+			before 	do
+				delete :destroy, id: user
+			end
+
+			it 			{ should redirect_to(users_path) }
+			it 			{ should set_the_flash.now.to("User destroyed.") }
 		end
 	end
 end

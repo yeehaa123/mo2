@@ -7,13 +7,16 @@ class Ability
 		if @user.roles.size == 0
 			can :read, :all #for guest without roles
 			can [:edit, :update], User do |u|
-				u.try(:_id) == user._id
+				u.try(:_id) == @user._id
 			end
 		end
 	end
 
 	def admin
 		can :manage, :all
+		cannot [:destroy], User do |u|
+				u.try(:_id) == @user._id
+		end
 		can :assign_roles, User
 	end
 end

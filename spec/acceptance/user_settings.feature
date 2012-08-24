@@ -1,13 +1,7 @@
-Feature: Viewing and edditing user information
+Feature: Editing user information
 	As a signed-in user
 	I want to be able to edit my profile
-	
-	@omniauth
-	Scenario: Viewing user information
-		Given I sign in with provider identity
-		And I visit my profile page
-	
-	@omniauth
+			
 	Scenario: Entering invalid information
 		Given I sign in with provider identity
 		And I visit my settings page
@@ -15,8 +9,7 @@ Feature: Viewing and edditing user information
 		When I press 'Save changes'
 		Then I should see 'error'
 
-	@omniauth
-	Scenario: Viewing user information
+	Scenario: Editing user information
 		Given I sign in with provider identity
 		And I visit my settings page
 		When I fill in "User" with "New Name"
