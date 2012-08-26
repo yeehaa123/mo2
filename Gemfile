@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 gem 'jquery-rails'
 gem 'haml', "~> 3.1.6"
 gem 'haml-rails', "~> 0.3.4"
 gem 'faker'
 gem 'kaminari'
+gem 'brakeman'
+gem 'mongoid-slugify'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -53,6 +55,7 @@ group :test do
   gem 'launchy', '2.1.0'
   gem 'email_spec'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false
   # Mac OS X
   gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl', '1.0.3'

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       # Means our user is signed in. Add the authorization to the user
       current_user.add_provider(auth_hash)
 
-      redirect_to origin, notice: "You can now login using #{ auth_hash["provider"].capitalize } too!"
+      redirect_to origin, notice: "You can now login using #{ auth_hash["provider"].capitalize } too!", only_path: true
     else
       # Log him/her in or sign him/her up
       auth = Authorization.find_or_create(auth_hash)
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       # Create the session
       sign_in(auth.user)
 
-      redirect_to origin, notice: "Welcome #{ auth.user.user_name }"
+      redirect_to origin, notice: "Welcome #{ auth.user.user_name }", only_path: true
     end
   end
 

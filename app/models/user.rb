@@ -3,6 +3,7 @@ class User
   include Mongoid::Timestamps
   include Mongoid::Paranoia
   include Mongoid::Versioning
+  include Mongoid::Slugify
 
   field :user_name, type: String
   field :first_name, type: String
@@ -10,7 +11,7 @@ class User
   field :email, type: String
   field :remember_token, type: String
   field :roles_mask, type: Integer
-
+  
   index({ email: 1 }, { unique: true, name: "index_users_on_email"})
   index({ remember_token: 1 })
 
@@ -51,6 +52,11 @@ class User
   def is?(role)
     roles.include?(role.to_s)
   end
+
+  private
+    def generate_slug
+      user_name.parameterize
+    end
 end
 
   # def self.from_omniauth(auth)
