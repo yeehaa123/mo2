@@ -13,7 +13,8 @@ class Authorization
 
 	def self.find_or_create(auth_hash)
     unless auth = where(auth_hash.slice("provider", "uid")).first
-      user = User.create!(user_name:  auth_hash["info"]["nickname"] || auth_hash["info"]["name"],
+      user = User.create!(user_name:  auth_hash["info"]["nickname"] || 
+                                      auth_hash["info"]["name"],
                           email:      auth_hash["info"]["email"],
                           first_name: auth_hash["info"]["first_name"],
                           last_name:  auth_hash["info"]["last_name"])

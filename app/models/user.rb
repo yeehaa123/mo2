@@ -16,6 +16,7 @@ class User
   index({ remember_token: 1 })
 
   has_many :authorizations, dependent: :delete
+  has_many :articles, dependent: :destroy
   
   validates :user_name, presence: true, length: { maximum: 50 }
 
@@ -40,7 +41,8 @@ class User
   end
 
   def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }
+                      .inject(0, :+)
   end
 
   def roles

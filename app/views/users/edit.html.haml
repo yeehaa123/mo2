@@ -1,7 +1,7 @@
 - provide(:title, "Edit user")
 %h1 Update your profile
 = form_for(@user) do |f|
-	= render 'shared/error_messages'
+	= render 'shared/error_messages', user: @user
 
 	= f.label :user_name
 	= f.text_field :user_name

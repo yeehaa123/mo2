@@ -28,6 +28,10 @@ gem 'wicked_pdf'
 gem 'kramdown'
 gem 'haml-kramdown'
 
+group :development do
+  gem 'rails_best_practices'
+end
+
 group :development, :test do
   gem 'rspec-rails', '2.11.0'
   gem 'guard-rspec', '0.5.5'
@@ -73,9 +77,9 @@ end
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
-gem 'passenger'
+# gem 'passenger'
 
 # Deploy with Capistrano
 # gem 'capistrano'

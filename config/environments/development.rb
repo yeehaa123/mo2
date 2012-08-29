@@ -17,12 +17,12 @@ Mo2::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   # A dummy setup for development - no deliveries, but logged
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default charset: "utf-8"
   
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,7 +34,7 @@ Mo2::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
 
   ENV['FACEBOOK_KEY'] = "298374053604013";
   ENV['FACEBOOK_SECRET'] = "17fc0288d2f5f0f5fc201ff8e60651d5";

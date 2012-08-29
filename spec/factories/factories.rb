@@ -9,4 +9,9 @@ FactoryGirl.define do
 			roles ["admin"]
 		end
   end
+
+  factory :article do
+  	content "Lorem ipsum"
+  	user
+  end
 end

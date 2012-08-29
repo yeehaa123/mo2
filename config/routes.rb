@@ -1,17 +1,19 @@
 Mo2::Application.routes.draw do
   root to: 'static_pages#home'
   
-  resources :users
+  resources :users, only: [:show, :edit, :update, :destroy, :index]
 
   match '/auth/:provider/callback', to: 'sessions#create'
   match 'signout', to: 'sessions#destroy', via: :delete, as: 'signout'
   match 'signin', to: 'sessions#new', as: 'signin'
   match 'auth/failure', to: "sessions#failure"
   
-  resources :identities
+  resources :identities, only: [:new]
 
-  match '/article', to: 'static_pages#article'
+  # match '/article', to: 'static_pages#article'
   match '/about',   to: 'static_pages#about'
+
+  resources :articles
 end
 
 
