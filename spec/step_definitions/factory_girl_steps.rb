@@ -19,6 +19,10 @@ step ":count users exist" do |count|
 	FactoryGirl.create_list(:user, count.to_i)
 end
 
+step "I have :count articles" do |count|
+	FactoryGirl.create_list(:article, count.to_i, user: @user)
+end
+
 # FactoryGirl.factories.each do |factory|
 #   factory.compile
 #   factory.human_names.each do |human_name|

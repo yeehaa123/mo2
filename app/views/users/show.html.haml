@@ -5,5 +5,13 @@
 %p= @user.first_name
 %p= @user.last_name
 %p= @user.email
+
 - @user.authorizations.each do |auth|
 	%p= "#{ auth }"
+
+%h3= "Articles #{ @user.articles.count }"
+
+= paginate @articles
+
+%ul.articles
+	= render @articles

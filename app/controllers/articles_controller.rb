@@ -16,5 +16,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
+		@articles = @articles.page(params[:page])
 	end
 end

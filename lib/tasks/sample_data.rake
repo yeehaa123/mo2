@@ -11,5 +11,10 @@ namespace :db do
 									 first_name: first_name,
 									 last_name: last_name)
 		end
+		users = 	User.limit(10)
+		50.times do
+			content = "# #{ Faker::Lorem.sentence(5) }\n #{ Faker::Lorem.sentence(500) }"
+			users.each { |user| user.articles.create!(content: content) }
+		end
 	end
 end

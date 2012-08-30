@@ -9,11 +9,11 @@ Feature: Overall Site Layout
 		And I should see "Medial Operations" within "title"
 		And I should not see "Home" within "title"
 
-	Scenario: Visiting the Article page
-		Given I am on the homepage
-		And I follow "article"
-		Then I should see "The Good Foot"
-		And I should see "Medial Operations // Article" within "title"
+	# Scenario: Visiting the Article page
+	# 	Given I am on the homepage
+	# 	And I follow "article"
+	# 	Then I should see "The Good Foot"
+	# 	And I should see "Medial Operations // Article" within "title"
 
 	Scenario: Return to Homepage
 		Given I am on the homepage
@@ -35,10 +35,13 @@ Feature: Overall Site Layout
 
 	Scenario: Visiting a User's Profile page
 		Given I am on the homepage
-		And I sign in with provider "identity"
+		When I sign in with provider "identity"
+		And I have 2 articles
 		And I follow 'profile'
 		Then I should see my name within "h1"
 		And I should see my name within "title"
+		And I should see my articles
+		And I should see my article count
 	
 	Scenario: Visting a User's Edit page
 		Given I am on the homepage

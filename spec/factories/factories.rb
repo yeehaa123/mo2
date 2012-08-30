@@ -11,7 +11,8 @@ FactoryGirl.define do
   end
 
   factory :article do
-  	content "Lorem ipsum"
+    sequence(:title) { |t| "Title #{t}" }
+  	content "# Lorem ipsum"
   	user
   end
 end

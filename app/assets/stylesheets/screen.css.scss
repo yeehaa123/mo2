@@ -25,7 +25,6 @@ html {
   @include container($total-columns, $break);
   // @extend .grid; 
   @include clearfix;
-  color: $themebackground5;
   font-family: "museo-sans-1","museo-sans-2",sans-serif;
   font-style: normal;
   font-weight: 200;
@@ -73,6 +72,10 @@ html {
       color: $themebackground2;
     }
   }
+}
+
+.summary {
+  color: $themebackground5;
 }
 
 .pagenav {
@@ -194,6 +197,7 @@ html {
     margin-bottom: 15px;
     @include box-sizing(border-box);
     @include single-box-shadow(inset, black, 0em, -0.1em, 0.2em);
+    color: $themebase;
     &.btn{
       background-color: $themebackground5;
     }
