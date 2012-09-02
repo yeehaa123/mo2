@@ -1,5 +1,7 @@
+- provide(:title, "New article")
 %h1 New Article
 = form_for(@article) do |f|
+	= render 'shared/error_messages', object: f.object
 	= f.text_field 	:title
-	= f.text_area 	:content
-	= f.submit
+	= f.text_area 	:content, placeholder: "Use markdown to write your artice..."
+	= f.submit "Post", class: "btn"

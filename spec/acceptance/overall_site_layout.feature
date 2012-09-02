@@ -9,11 +9,12 @@ Feature: Overall Site Layout
 		And I should see "Medial Operations" within "title"
 		And I should not see "Home" within "title"
 
-	# Scenario: Visiting the Article page
-	# 	Given I am on the homepage
-	# 	And I follow "article"
-	# 	Then I should see "The Good Foot"
-	# 	And I should see "Medial Operations // Article" within "title"
+	Scenario: Visiting the Articles page
+		Given I am on the homepage
+		And there are 2 articles
+		And I follow "articles"
+		Then I should see all article titles
+		And I should see "Medial Operations // Articles" within "title"
 
 	Scenario: Return to Homepage
 		Given I am on the homepage

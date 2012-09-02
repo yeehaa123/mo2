@@ -23,6 +23,10 @@ step "I have :count articles" do |count|
 	FactoryGirl.create_list(:article, count.to_i, user: @user)
 end
 
+step "there are :count articles" do |count|
+	FactoryGirl.create_list(:article, count.to_i)
+end
+
 # FactoryGirl.factories.each do |factory|
 #   factory.compile
 #   factory.human_names.each do |human_name|

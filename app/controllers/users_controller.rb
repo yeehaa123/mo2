@@ -2,13 +2,13 @@ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update]
   load_and_authorize_resource find_by: :slug
 
+  def index
+    @users = User.all.page(params[:page])
+  end
+
   def show
     @articles = @user.articles.page(params[:page])
 	end
-
-	def index
-    @users = User.all.page(params[:page])
-  end
 
   def edit
   end
@@ -31,10 +31,4 @@ class UsersController < ApplicationController
     flash[:success] = "User destroyed."
     redirect_to users_path
   end
-  
-  private
-
-    def signed_in_user
-      redirect_to signin_path, notice: "Please sign in." unless signed_in?
-    end
 end

@@ -12,6 +12,10 @@ with_scope(selector) do
 	end
 end
 
+step "I visit the new articles page" do
+  visit new_article_path
+end
+
 step "I visit the sign up page" do
   visit new_identity_path
 end

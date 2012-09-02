@@ -226,6 +226,31 @@ html {
       }
     }
   }
+  
+  // Articles
+
+  .articles {
+    list-style: none;
+    margin: 10px 0 0 0;
+
+    li {
+      padding: 10px 0;
+      border-top: 1px solid $themebase;
+    }
+  }
+
+  .title {
+    display: block;
+  }
+
+  .timestamp {
+    color: $themebase;
+  }
+
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+  }
 
   // Errors
   #error_explanation{

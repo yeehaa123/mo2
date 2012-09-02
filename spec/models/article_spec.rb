@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Article do
 
 	let(:user) { FactoryGirl.create(:user) }
-	before { @article = user.articles.build(content: "Lorem ipsum") }
+	before { @article = user.articles.build(content: "# Lorem ipsum") }
 
 	subject { @article }
 
