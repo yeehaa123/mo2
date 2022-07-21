@@ -290,7 +290,7 @@ GEM
     turnip (1.0.0)
       gherkin (>= 2.5)
       rspec (~> 2.0)
-    tzinfo (0.3.33)
+    tzinfo (0.3.61)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
